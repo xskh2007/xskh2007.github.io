@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mysql," />
+  <meta name="keywords" content="hadoop," />
 
 
 
@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="准备工作setenforce 0   service iptables stop yum -y install mysql-server mysql-devel mysql service mysqld start service mysqld stop 192.168.128.140上操作[root@localhost ~]# vim /etc/my.cnf   [client] defaul">
-<meta name="keywords" content="mysql">
+<meta name="description" content="添加节点1.修改host  和普通的datanode一样。添加namenode的ip  2.修改namenode的配置文件conf/slaves  添加新增节点的ip或host  3.在新节点的机器上，启动服务    [root@slave-004 hadoop]# ./sbin/hadoop-daemon.sh start datanode    [root@slave-004 hadoop]">
+<meta name="keywords" content="hadoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql主主同步配置">
-<meta property="og:url" content="http://yoursite.com/2017/06/15/mysql/mysql_主主/index.html">
+<meta property="og:title" content="亲测-Hadoop添加删除节点">
+<meta property="og:url" content="http://yoursite.com/2017/06/15/anything/亲测-Hadoop添加删除节点/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="准备工作setenforce 0   service iptables stop yum -y install mysql-server mysql-devel mysql service mysqld start service mysqld stop 192.168.128.140上操作[root@localhost ~]# vim /etc/my.cnf   [client] defaul">
-<meta property="og:updated_time" content="2017-06-19T03:02:31.288Z">
+<meta property="og:description" content="添加节点1.修改host  和普通的datanode一样。添加namenode的ip  2.修改namenode的配置文件conf/slaves  添加新增节点的ip或host  3.在新节点的机器上，启动服务    [root@slave-004 hadoop]# ./sbin/hadoop-daemon.sh start datanode    [root@slave-004 hadoop]">
+<meta property="og:updated_time" content="2017-06-20T10:31:06.524Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql主主同步配置">
-<meta name="twitter:description" content="准备工作setenforce 0   service iptables stop yum -y install mysql-server mysql-devel mysql service mysqld start service mysqld stop 192.168.128.140上操作[root@localhost ~]# vim /etc/my.cnf   [client] defaul">
+<meta name="twitter:title" content="亲测-Hadoop添加删除节点">
+<meta name="twitter:description" content="添加节点1.修改host  和普通的datanode一样。添加namenode的ip  2.修改namenode的配置文件conf/slaves  添加新增节点的ip或host  3.在新节点的机器上，启动服务    [root@slave-004 hadoop]# ./sbin/hadoop-daemon.sh start datanode    [root@slave-004 hadoop]">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/15/mysql/mysql_主主/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/15/anything/亲测-Hadoop添加删除节点/"/>
 
 
 
 
 
-  <title>mysql主主同步配置 | 向山看海</title>
+  <title>亲测-Hadoop添加删除节点 | 向山看海</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/mysql/mysql_主主/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/anything/亲测-Hadoop添加删除节点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qiantu">
@@ -338,7 +338,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mysql主主同步配置</h1>
+          <h1 class="post-title" itemprop="name headline">亲测-Hadoop添加删除节点</h1>
         
 
         <div class="post-meta">
@@ -373,8 +373,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
+                  <a href="/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
                   </a>
                 </span>
 
@@ -391,7 +391,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/15/mysql/mysql_主主/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/15/anything/亲测-Hadoop添加删除节点/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -423,123 +423,33 @@
 
       
         <!-- toc -->
-<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><pre><code>setenforce 0  
-service iptables stop
-yum -y install mysql-server mysql-devel mysql
-service mysqld start
-service mysqld stop
-</code></pre><h4 id="192-168-128-140上操作"><a href="#192-168-128-140上操作" class="headerlink" title="192.168.128.140上操作"></a>192.168.128.140上操作</h4><pre><code>[root@localhost ~]# vim /etc/my.cnf 
-
-[client]
-default-character-set=utf8
-[mysqld]
-wait_timeout         = 864000
-interactive_timeout  = 864000
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
-user=mysql
-# Disabling symbolic-links is recommended to prevent assorted security risks
-symbolic-links=0
-
-auto_increment_offset=1
-auto-increment-increment=2
-server_id = 140
-log-bin=mysql-bin
-character_set_server=utf8
-replicate_wild_ignore_table=information_schema.%
-replicate-wild_ignore_table=performance_schema.%
-replicate-wild_ignore_table=test.%
-
-[mysqld_safe]
-log-error=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
-
-[root@localhost ~]# service mysqld restart
-</code></pre><h4 id="192-168-128-137-上操作"><a href="#192-168-128-137-上操作" class="headerlink" title="192.168.128.137 上操作"></a>192.168.128.137 上操作</h4><p>[root@localhost ~]# vi /etc/my.cnf </p>
-<pre><code>[client]
-default-character-set=utf8
-[mysqld]
-wait_timeout         = 864000
-interactive_timeout  = 864000
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
-user=mysql
-# Disabling symbolic-links is recommended to prevent assorted security risks
-symbolic-links=0
-
-auto_increment_offset=2
-auto-increment-increment=2
-server_id = 053
-log-bin=mysql-bin
-character_set_server=utf8
-replicate_wild_ignore_table=information_schema.%
-replicate-wild_ignore_table=performance_schema.%
-replicate-wild_ignore_table=test.%
-
-[mysqld_safe]
-log-error=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
-
-[root@localhost ~]# service mysqld restart
-</code></pre><h4 id="192-168-128-140-上操作"><a href="#192-168-128-140-上操作" class="headerlink" title="192.168.128.140 上操作"></a>192.168.128.140 上操作</h4><pre><code>mysql&gt; GRANT REPLICATION SLAVE ON *.* TO &apos;repl&apos;@&apos;192.168.128.137&apos; IDENTIFIED BY &apos;twlqccr&apos;;
-mysql&gt; GRANT REPLICATION SLAVE ON *.* TO &apos;repl&apos;@&apos;192.168.128.140&apos; IDENTIFIED BY &apos;twlqccr&apos;;
-mysql&gt; flush tables with read lock; 
-mysql&gt; show master status\G
-*************************** 1. row ***************************
-            File: mysql-bin.000001
-        Position: 430
-    Binlog_Do_DB:
-Binlog_Ignore_DB:
-1 row in set (0.00 sec)
-
-导出数据，scp到192.168.128..137
-mysqldump qiantu &gt;/tmp/qiantu.sql 
-scp /tmp/qiantu.sql 192.168.128.137:/tmp/
-
-mysql&gt;UNLOCK TABLES;
-
-
-192.168.128.137 上操作
-mysql&gt; GRANT REPLICATION SLAVE ON *.* TO &apos;repl&apos;@&apos;192.168.128.137&apos; IDENTIFIED BY &apos;twlqccr&apos;;
-mysql&gt; GRANT REPLICATION SLAVE ON *.* TO &apos;repl&apos;@&apos;192.168.128.140&apos; IDENTIFIED BY &apos;twlqccr&apos;;
-mysql&gt; create database qiantu ;
-mysql&gt; use qiantu;
-mysql&gt; source /tmp/qiantu.sql;
-
-stop slave;
-reset slave;
-change master to master_host=&apos;192.168.128.140&apos;,master_user=&apos;repl&apos;, master_password=&apos;twlqccr&apos;, master_port=3306, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=430;
-start slave;
-show slave status\G
-</code></pre><h4 id="在192-168-128-137看到两个yes就代表192-168-128-140-主-192-168-128-137-从-成功了"><a href="#在192-168-128-137看到两个yes就代表192-168-128-140-主-192-168-128-137-从-成功了" class="headerlink" title="在192.168.128.137看到两个yes就代表192.168.128.140(主)192.168.128.137(从)成功了"></a>在192.168.128.137看到两个yes就代表192.168.128.140(主)192.168.128.137(从)成功了</h4><p>反过来再做一次，就是主主了</p>
-<h4 id="192-168-128-137-查看"><a href="#192-168-128-137-查看" class="headerlink" title="192.168.128.137 查看"></a>192.168.128.137 查看</h4><pre><code>mysql&gt; flush tables with read lock; 
-mysql&gt; show master status\G
-*************************** 1. row ***************************
-            File: mysql-bin.000001
-        Position: 1500
-    Binlog_Do_DB:
-Binlog_Ignore_DB:
-1 row in set (0.00 sec)
-
-
-
-192.168.128.140 上操作
-stop slave;
-reset slave;
-change master to master_host=&apos;192.168.128.137&apos;,master_user=&apos;repl&apos;, master_password=&apos;twlqccr&apos;, master_port=3306, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=1500;
-start slave;
-show slave status\G
-</code></pre><h4 id="在192-168-128-140看到两个yes就代表主从192-168-128-137-主-192-168-128-140-从-成功了"><a href="#在192-168-128-140看到两个yes就代表主从192-168-128-137-主-192-168-128-140-从-成功了" class="headerlink" title="在192.168.128.140看到两个yes就代表主从192.168.128.137(主)192.168.128.140(从)成功了"></a>在192.168.128.140看到两个yes就代表主从192.168.128.137(主)192.168.128.140(从)成功了</h4><p>测试，新建一个数据库 去另一台机器看看是否有生成</p>
-<h4 id="测试脚本"><a href="#测试脚本" class="headerlink" title="测试脚本"></a>测试脚本</h4><pre><code>#!/bin/bash
-mysql -e &quot;create database qiantu;&quot;
-mysql -e &quot;create table qiantu.demo(addtime timestamp);&quot;
-while true
-do
-mysql -e &quot;select * from qiantu.demo;&quot;
-sleep 3
-mysql -e &quot;insert into qiantu.demo values(null);&quot;
-done
-</code></pre><p>#如果是克隆的第二台机器，要改下uuid，不然会报错<br>vim /var/lib/mysql/auto.cnf<br>[auto]<br>server-uuid=99424caf-4807-11e6-a88d-005056806ac1</p>
+<h3 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a>添加节点</h3><p>1.修改host<br>  和普通的datanode一样。添加namenode的ip </p>
+<p>2.修改namenode的配置文件conf/slaves<br>  添加新增节点的ip或host </p>
+<p>3.在新节点的机器上，启动服务<br>    [root@slave-004 hadoop]# ./sbin/hadoop-daemon.sh start datanode<br>    [root@slave-004 hadoop]# ./bin/hadoop-daemon.sh start tasktracker<br>    sbin/start-yarn.sh</p>
+<p>4.均衡block<br>    [root@slave-004 hadoop]# ./bin/start-balancer.sh</p>
+<p>1）如果不balance，那么cluster会把新的数据都存放在新的node上，这样会降低mapred的工作效率<br>2）设置平衡阈值，默认是10%，值越低各节点越平衡，但消耗时间也更长<br>[root@slave-004 hadoop]# ./bin/start-balancer.sh -threshold 5<br>3）设置balance的带宽，默认只有1M/s<br>[图片]<br>    <property><br>    　　<name>dfs.balance.bandwidthPerSec</name><br>    　　<value>1048576</value><br>    　　<description><br>    　　　　Specifies the maximum amount of bandwidth that each datanode<br>    　　　　can utilize for the balancing purpose in term of<br>    　　　　the number of bytes per second.<br>    　　</description><br>    </property><br>[图片]</p>
+<p>注意： </p>
+<ol>
+<li>必须确保slave的firewall已关闭; </li>
+<li>确保新的slave的ip已经添加到master及其他slaves的/etc/hosts中，反之也要将master及其他slave的ip添加到新的slave的/etc/hosts中</li>
+</ol>
+<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><h4 id="1-集群配置"><a href="#1-集群配置" class="headerlink" title="1.集群配置"></a>1.集群配置</h4><p>   修改conf/hdfs-site.xml文件<br>[图片]</p>
+<pre><code>&lt;property&gt;  
+　　&lt;name&gt;dfs.hosts.exclude&lt;/name&gt;  
+　　&lt;value&gt;/data/soft/hadoop/conf/excludes&lt;/value&gt;  
+　　&lt;description&gt;Names a file that contains a list of hosts that are   
+　　not permitted to connect to the namenode.  The full pathname of the   
+　　file must be specified.  If the value is empty, no hosts are   
+　　excluded.&lt;/description&gt;
+&lt;/property&gt;
+</code></pre><p>[图片]</p>
+<h4 id="2确定要下架的机器"><a href="#2确定要下架的机器" class="headerlink" title="2确定要下架的机器"></a>2确定要下架的机器</h4><p>dfs.hosts.exclude定义的文件内容为,每个需要下线的机器，一行一个。这个将阻止他们去连接Namenode。如：<br>slave-003<br>slave-004  </p>
+<h4 id="3-强制重新加载配置"><a href="#3-强制重新加载配置" class="headerlink" title="3.强制重新加载配置"></a>3.强制重新加载配置</h4><p>[root@master hadoop]# ./bin/hadoop dfsadmin  -refreshNodes<br>它会在后台进行Block块的移动 </p>
+<h4 id="4-关闭节点"><a href="#4-关闭节点" class="headerlink" title="4.关闭节点"></a>4.关闭节点</h4><p>等待刚刚的操作结束后，需要下架的机器就可以安全的关闭了。<br>    [root@master hadoop]# ./bin/ hadoop dfsadmin -report  </p>
+<p>可以查看到现在集群上连接的节点 </p>
+<p>正在执行Decommission，会显示：<br>Decommission Status : Decommission in progress  </p>
+<p>执行完毕后，会显示：<br>Decommission Status : Decommissioned  </p>
+<h4 id="5-再次编辑excludes文件"><a href="#5-再次编辑excludes文件" class="headerlink" title="5.再次编辑excludes文件"></a>5.再次编辑excludes文件</h4><p>一旦完成了机器下架，它们就可以从excludes文件移除了<br>登录要下架的机器，会发现DataNode进程没有了，但是TaskTracker依然存在，需要手工处理一下</p>
 
       
     </div>
@@ -569,7 +479,7 @@ done
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
           
         </div>
       
@@ -582,8 +492,8 @@ done
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/15/python/Django中内置的权限控制1－User Model/" rel="next" title="Django中内置的权限控制1－User Model">
-                <i class="fa fa-chevron-left"></i> Django中内置的权限控制1－User Model
+              <a href="/2017/06/15/cloud/k8s/" rel="next" title="Kubernetes 安装">
+                <i class="fa fa-chevron-left"></i> Kubernetes 安装
               </a>
             
           </div>
@@ -592,8 +502,8 @@ done
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/15/mysql/Percona XtraDB Cluster 多主集群研究实现MYSQL负载分流/" rel="prev" title="mysql群集">
-                mysql群集 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/15/cloud/cloud/" rel="prev" title="kvm虚拟化管理平台WebVirtMgr部署-完整记录(1)">
+                kvm虚拟化管理平台WebVirtMgr部署-完整记录(1) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -739,7 +649,7 @@ done
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#192-168-128-140上操作"><span class="nav-number">2.</span> <span class="nav-text">192.168.128.140上操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#192-168-128-137-上操作"><span class="nav-number">3.</span> <span class="nav-text">192.168.128.137 上操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#192-168-128-140-上操作"><span class="nav-number">4.</span> <span class="nav-text">192.168.128.140 上操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在192-168-128-137看到两个yes就代表192-168-128-140-主-192-168-128-137-从-成功了"><span class="nav-number">5.</span> <span class="nav-text">在192.168.128.137看到两个yes就代表192.168.128.140(主)192.168.128.137(从)成功了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#192-168-128-137-查看"><span class="nav-number">6.</span> <span class="nav-text">192.168.128.137 查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在192-168-128-140看到两个yes就代表主从192-168-128-137-主-192-168-128-140-从-成功了"><span class="nav-number">7.</span> <span class="nav-text">在192.168.128.140看到两个yes就代表主从192.168.128.137(主)192.168.128.140(从)成功了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试脚本"><span class="nav-number">8.</span> <span class="nav-text">测试脚本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加节点"><span class="nav-number">1.</span> <span class="nav-text">添加节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除节点"><span class="nav-number">2.</span> <span class="nav-text">删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-集群配置"><span class="nav-number">2.1.</span> <span class="nav-text">1.集群配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2确定要下架的机器"><span class="nav-number">2.2.</span> <span class="nav-text">2确定要下架的机器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-强制重新加载配置"><span class="nav-number">2.3.</span> <span class="nav-text">3.强制重新加载配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-关闭节点"><span class="nav-number">2.4.</span> <span class="nav-text">4.关闭节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-再次编辑excludes文件"><span class="nav-number">2.5.</span> <span class="nav-text">5.再次编辑excludes文件</span></a></li></ol></li></ol></div>
             
 
           </div>
