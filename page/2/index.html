@@ -753,152 +753,6 @@ SQL的发展是从1974年开始的，其发展过程如下：1974年—–由Boy
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/mysql/mysql_主主/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qiantu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向山看海">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/15/mysql/mysql_主主/" itemprop="url">mysql主主同步配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T14:17:27+08:00">
-                2017-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-准备工作setenforce 0  
-service iptables stop
-yum -y install mysql-server mysql-devel mysql
-service mysqld start
-service mysqld stop
-192.168.128.140上操作[ro
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/15/mysql/mysql_主主/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/python/Django中内置的权限控制1－User Model/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1041,7 +895,7 @@ Django内置的权限系统包括
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/python/python实现websocket,实时显示日志/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/mysql/mysql_主主/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qiantu">
@@ -1060,7 +914,7 @@ Django内置的权限系统包括
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/15/python/python实现websocket,实时显示日志/" itemprop="url">使用python简单的实现websocket服务器</a></h1>
+                <a class="post-title-link" href="/2017/06/15/mysql/mysql_主主/" itemprop="url">mysql主主同步配置</a></h1>
         
 
         <div class="post-meta">
@@ -1095,8 +949,8 @@ Django内置的权限系统包括
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/websocket/" itemprop="url" rel="index">
-                    <span itemprop="name">websocket</span>
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
                   </a>
                 </span>
 
@@ -1132,11 +986,16 @@ Django内置的权限系统包括
         
           
           
-一、开始的话使用python简单的实现websocket服务器，可以在浏览器上实时显示远程服务器的日志信息。之前做了一个web版的发布系统，但没实现在线看日志，每次发布版本后，都需要登录到服务器上查看日志，非常麻烦，为了偷懒，能在页面点几下按钮完成工作，所以这几天查找了这方面的资料，实现了这个功能
+准备工作setenforce 0  
+service iptables stop
+yum -y install mysql-server mysql-devel mysql
+service mysqld start
+service mysqld stop
+192.168.128.140上操作[ro
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/15/python/python实现websocket,实时显示日志/#more" rel="contents">
+            <a class="btn" href="/2017/06/15/mysql/mysql_主主/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1324,7 +1183,7 @@ Linux Curl首先找到的是J
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/zjump/zjump/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/python/python实现websocket,实时显示日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qiantu">
@@ -1343,7 +1202,7 @@ Linux Curl首先找到的是J
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/15/zjump/zjump/" itemprop="url">zjump</a></h1>
+                <a class="post-title-link" href="/2017/06/15/python/python实现websocket,实时显示日志/" itemprop="url">使用python简单的实现websocket服务器</a></h1>
         
 
         <div class="post-meta">
@@ -1378,8 +1237,8 @@ Linux Curl首先找到的是J
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql审核/" itemprop="url" rel="index">
-                    <span itemprop="name">sql审核</span>
+                  <a href="/categories/websocket/" itemprop="url" rel="index">
+                    <span itemprop="name">websocket</span>
                   </a>
                 </span>
 
@@ -1415,15 +1274,11 @@ Linux Curl首先找到的是J
         
           
           
-项目开发背景由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，  
-没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。  
-所以本人就写了dbtool这个web数据库管理后台。  
-项目开发目标web端数据查询
-w
+一、开始的话使用python简单的实现websocket服务器，可以在浏览器上实时显示远程服务器的日志信息。之前做了一个web版的发布系统，但没实现在线看日志，每次发布版本后，都需要登录到服务器上查看日志，非常麻烦，为了偷懒，能在页面点几下按钮完成工作，所以这几天查找了这方面的资料，实现了这个功能
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/15/zjump/zjump/#more" rel="contents">
+            <a class="btn" href="/2017/06/15/python/python实现websocket,实时显示日志/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1566,6 +1421,150 @@ zabbix3.2.1分布式监控，采用agent主动模式有点：1、分布式，全
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/15/zabbix/zabbix3.2.1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qiantu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向山看海">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/" itemprop="url">自动巡检脚本(调用zabbix接口实现)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T14:17:27+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">zabbix</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+crontab: no changes made to crontab
+[root@autoyunwei ~]# vim /etc/crontab 
+[root@autoyunwei ~]# vim /root/script/xunjian.py
+[root@autoyunwei ~]# cat 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
