@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编译原理," />
+  <meta name="keywords" content="," />
 
 
 
@@ -95,17 +95,19 @@
 
 
 
-<meta name="description" content="编译原理三步：     读书：龙虎鍄，把课后的题目会做的都做一遍。   自己写一个toy compiler，编译一些简单的代码，尝试理解各部分之间如何整合。  看LLVM的代码，试着在上面加一些东西。这样你就入门了，但要真正学好编译器仍然是要与硬件打交道的，所以尝试去大公司编译组学习吧。">
-<meta name="keywords" content="编译原理">
-<meta property="og:type" content="article">
-<meta property="og:title" content="编译原理">
-<meta property="og:url" content="http://yoursite.com/2017/06/15/anything/Compile/index.html">
+<meta name="description" content="项目开发背景1、由于多项目并行开发，系统架构不断拆分导致一个环境就需要几十台虚拟机。需要很多的开发测试环境。 2、一个项目上线后这些环境又会有没人维护的尴尬局面。继续给后面的项目用的话又会有各种缺少表结构，配置文件。包依赖等问题。 3、现阶段如果新加一个环境的话基本上没2.3天时间是搞不定的。而且会有各种遗漏和手误。有些错误甚至是很难发现的 新建一个环境的具体事情如下：1、批量克隆虚拟机 2、批">
+<meta name="keywords" content="envmanage">
+<meta property="og:type" content="website">
+<meta property="og:title" content="envmanage">
+<meta property="og:url" content="http://yoursite.com/envmanage/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="编译原理三步：     读书：龙虎鍄，把课后的题目会做的都做一遍。   自己写一个toy compiler，编译一些简单的代码，尝试理解各部分之间如何整合。  看LLVM的代码，试着在上面加一些东西。这样你就入门了，但要真正学好编译器仍然是要与硬件打交道的，所以尝试去大公司编译组学习吧。">
-<meta property="og:updated_time" content="2017-06-19T03:02:31.209Z">
+<meta property="og:description" content="项目开发背景1、由于多项目并行开发，系统架构不断拆分导致一个环境就需要几十台虚拟机。需要很多的开发测试环境。 2、一个项目上线后这些环境又会有没人维护的尴尬局面。继续给后面的项目用的话又会有各种缺少表结构，配置文件。包依赖等问题。 3、现阶段如果新加一个环境的话基本上没2.3天时间是搞不定的。而且会有各种遗漏和手误。有些错误甚至是很难发现的 新建一个环境的具体事情如下：1、批量克隆虚拟机 2、批">
+<meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/envmanage/envmanage.jpg">
+<meta property="og:updated_time" content="2017-07-12T04:02:59.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编译原理">
-<meta name="twitter:description" content="编译原理三步：     读书：龙虎鍄，把课后的题目会做的都做一遍。   自己写一个toy compiler，编译一些简单的代码，尝试理解各部分之间如何整合。  看LLVM的代码，试着在上面加一些东西。这样你就入门了，但要真正学好编译器仍然是要与硬件打交道的，所以尝试去大公司编译组学习吧。">
+<meta name="twitter:title" content="envmanage">
+<meta name="twitter:description" content="项目开发背景1、由于多项目并行开发，系统架构不断拆分导致一个环境就需要几十台虚拟机。需要很多的开发测试环境。 2、一个项目上线后这些环境又会有没人维护的尴尬局面。继续给后面的项目用的话又会有各种缺少表结构，配置文件。包依赖等问题。 3、现阶段如果新加一个环境的话基本上没2.3天时间是搞不定的。而且会有各种遗漏和手误。有些错误甚至是很难发现的 新建一个环境的具体事情如下：1、批量克隆虚拟机 2、批">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/envmanage/envmanage.jpg">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/15/anything/Compile/"/>
+  <link rel="canonical" href="http://yoursite.com/envmanage/"/>
 
 
 
 
 
-  <title>编译原理 | 向山看海</title>
+  <title>envmanage | 向山看海</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -312,193 +314,38 @@
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline">envmanage</h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/anything/Compile/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qiantu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向山看海">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">编译原理</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T14:17:27+08:00">
-                2017-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编译原理/" itemprop="url" rel="index">
-                    <span itemprop="name">编译原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a class="cloud-tie-join-count" href="/2017/06/15/anything/Compile/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <!-- toc -->
-<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><p>三步：   </p>
-<ol>
-<li>读书：龙虎鍄，把课后的题目会做的都做一遍。  </li>
-<li>自己写一个toy compiler，编译一些简单的代码，尝试理解各部分之间如何整合。 </li>
-<li>看LLVM的代码，试着在上面加一些东西。<br>这样你就入门了，但要真正学好编译器仍然是要与硬件打交道的，所以尝试去大公司编译组学习吧。</li>
-</ol>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/" rel="next" title="自动巡检脚本(调用zabbix接口实现)">
-                <i class="fa fa-chevron-left"></i> 自动巡检脚本(调用zabbix接口实现)
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/15/zabbix/zabbix3.2.1/" rel="prev" title="zabbix3.2.1分布式监控，采用agent主动模式">
-                zabbix3.2.1分布式监控，采用agent主动模式 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
+      <!-- toc -->
+<h2 id="项目开发背景"><a href="#项目开发背景" class="headerlink" title="项目开发背景"></a>项目开发背景</h2><pre><code>1、由于多项目并行开发，系统架构不断拆分导致一个环境就需要几十台虚拟机。需要很多的开发测试环境。
+2、一个项目上线后这些环境又会有没人维护的尴尬局面。继续给后面的项目用的话又会有各种缺少表结构，配置文件。包依赖等问题。
+3、现阶段如果新加一个环境的话基本上没2.3天时间是搞不定的。而且会有各种遗漏和手误。有些错误甚至是很难发现的
+</code></pre><h4 id="新建一个环境的具体事情如下："><a href="#新建一个环境的具体事情如下：" class="headerlink" title="新建一个环境的具体事情如下："></a>新建一个环境的具体事情如下：</h4><pre><code>1、批量克隆虚拟机
+2、批量创建对应的jenkinsjob
+3、跳板机资产等级
+4、nginx配置文件修改为对应的ip
+5、虚拟机的host文件，dns文件。修改
+等等
+</code></pre><h2 id="项目功能程流程图"><a href="#项目功能程流程图" class="headerlink" title="项目功能程流程图"></a>项目功能程流程图</h2><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/envmanage/envmanage.jpg" alt="Screenshot"> </p>
+<h2 id="项目的开发方法"><a href="#项目的开发方法" class="headerlink" title="项目的开发方法"></a>项目的开发方法</h2><pre><code>在jumpserver0.3.2基础上加celery异步任务实现
+注意jumpserver0.3.2只支持python2.6，而新版本的celery只支持python2.7以上
+所以在安装celery时需要指定版本
+具体如下:
+pip install celery==3.1.20
+pip install django-celery==3.1.17
+</code></pre><h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><pre><code>Git 地址  https://github.com/xskh2007/zjump 
+QQ群：391096485
+</code></pre><h2 id="项目功能附图"><a href="#项目功能附图" class="headerlink" title="项目功能附图"></a>项目功能附图</h2><pre><code>待开发。。。
+</code></pre>
+    
   </div>
 
 
@@ -628,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译原理"><span class="nav-number">1.</span> <span class="nav-text">编译原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目开发背景"><span class="nav-number">1.</span> <span class="nav-text">项目开发背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建一个环境的具体事情如下："><span class="nav-number">1.0.1.</span> <span class="nav-text">新建一个环境的具体事情如下：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目功能程流程图"><span class="nav-number">2.</span> <span class="nav-text">项目功能程流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目的开发方法"><span class="nav-number">3.</span> <span class="nav-text">项目的开发方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目地址"><span class="nav-number">4.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目功能附图"><span class="nav-number">5.</span> <span class="nav-text">项目功能附图</span></a></li></ol></div>
             
 
           </div>
@@ -767,10 +614,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-
+  
 
   
 
