@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="1、系统安全基础架构与网络安全1、硬件防火墙 2、waf 应用安全1、代码审计及渗透测试 2、后台应用权限系统完善 系统安全1、系统漏洞补丁及时更新 2、定期更改密码 2、信息及内控安全堡垒往往是从内部突破的，所以内部管控显得尤为重要 企业安全制度1、不允许直接数据库客户端连线上数据库 2、不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanage">
+<meta name="description" content="系统安全基础架构与网络安全硬件防火墙 waf 应用安全代码审计及渗透测试 后台应用权限系统完善 超时保护 sql防注入 系统安全系统漏洞补丁及时更新 定期更改密码 员工电脑定期杀毒 信息及内控安全堡垒往往是从内部突破的，所以内部管控显得尤为重要 企业安全制度不允许直接数据库客户端连线上数据库 不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanag">
 <meta name="keywords" content="安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="企业安全管理规范">
 <meta property="og:url" content="http://yoursite.com/2017/07/14/anything/企业安全管理规范/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="1、系统安全基础架构与网络安全1、硬件防火墙 2、waf 应用安全1、代码审计及渗透测试 2、后台应用权限系统完善 系统安全1、系统漏洞补丁及时更新 2、定期更改密码 2、信息及内控安全堡垒往往是从内部突破的，所以内部管控显得尤为重要 企业安全制度1、不允许直接数据库客户端连线上数据库 2、不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanage">
-<meta property="og:updated_time" content="2017-07-14T08:10:05.028Z">
+<meta property="og:description" content="系统安全基础架构与网络安全硬件防火墙 waf 应用安全代码审计及渗透测试 后台应用权限系统完善 超时保护 sql防注入 系统安全系统漏洞补丁及时更新 定期更改密码 员工电脑定期杀毒 信息及内控安全堡垒往往是从内部突破的，所以内部管控显得尤为重要 企业安全制度不允许直接数据库客户端连线上数据库 不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanag">
+<meta property="og:updated_time" content="2017-07-14T08:25:01.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="企业安全管理规范">
-<meta name="twitter:description" content="1、系统安全基础架构与网络安全1、硬件防火墙 2、waf 应用安全1、代码审计及渗透测试 2、后台应用权限系统完善 系统安全1、系统漏洞补丁及时更新 2、定期更改密码 2、信息及内控安全堡垒往往是从内部突破的，所以内部管控显得尤为重要 企业安全制度1、不允许直接数据库客户端连线上数据库 2、不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanage">
+<meta name="twitter:description" content="系统安全基础架构与网络安全硬件防火墙 waf 应用安全代码审计及渗透测试 后台应用权限系统完善 超时保护 sql防注入 系统安全系统漏洞补丁及时更新 定期更改密码 员工电脑定期杀毒 信息及内控安全堡垒往往是从内部突破的，所以内部管控显得尤为重要 企业安全制度不允许直接数据库客户端连线上数据库 不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanag">
 
 
 
@@ -423,19 +423,33 @@
 
       
         <!-- toc -->
-<h2 id="1、系统安全"><a href="#1、系统安全" class="headerlink" title="1、系统安全"></a>1、系统安全</h2><h5 id="基础架构与网络安全"><a href="#基础架构与网络安全" class="headerlink" title="基础架构与网络安全"></a>基础架构与网络安全</h5><pre><code>1、硬件防火墙
-2、waf
-</code></pre><h5 id="应用安全"><a href="#应用安全" class="headerlink" title="应用安全"></a>应用安全</h5><pre><code>1、代码审计及渗透测试
-2、后台应用权限系统完善
-</code></pre><h5 id="系统安全"><a href="#系统安全" class="headerlink" title="系统安全"></a>系统安全</h5><pre><code>1、系统漏洞补丁及时更新
-2、定期更改密码
-</code></pre><h2 id="2、信息及内控安全"><a href="#2、信息及内控安全" class="headerlink" title="2、信息及内控安全"></a>2、信息及内控安全</h2><pre><code>堡垒往往是从内部突破的，所以内部管控显得尤为重要
-</code></pre><h5 id="企业安全制度"><a href="#企业安全制度" class="headerlink" title="企业安全制度"></a>企业安全制度</h5><pre><code>1、不允许直接数据库客户端连线上数据库
-2、不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanage/）    
-</code></pre><h5 id="企业流程控制"><a href="#企业流程控制" class="headerlink" title="企业流程控制"></a>企业流程控制</h5><h5 id="审计平台"><a href="#审计平台" class="headerlink" title="审计平台"></a>审计平台</h5><pre><code>应用日志审计
+<h2 id="系统安全"><a href="#系统安全" class="headerlink" title="系统安全"></a>系统安全</h2><h3 id="基础架构与网络安全"><a href="#基础架构与网络安全" class="headerlink" title="基础架构与网络安全"></a>基础架构与网络安全</h3><pre><code>硬件防火墙
+waf
+</code></pre><h3 id="应用安全"><a href="#应用安全" class="headerlink" title="应用安全"></a>应用安全</h3><pre><code>代码审计及渗透测试
+后台应用权限系统完善
+超时保护
+sql防注入
+</code></pre><h3 id="系统安全-1"><a href="#系统安全-1" class="headerlink" title="系统安全"></a>系统安全</h3><pre><code>系统漏洞补丁及时更新
+定期更改密码
+员工电脑定期杀毒
+</code></pre><h2 id="信息及内控安全"><a href="#信息及内控安全" class="headerlink" title="信息及内控安全"></a>信息及内控安全</h2><pre><code>堡垒往往是从内部突破的，所以内部管控显得尤为重要
+</code></pre><h3 id="企业安全制度"><a href="#企业安全制度" class="headerlink" title="企业安全制度"></a>企业安全制度</h3><pre><code>不允许直接数据库客户端连线上数据库
+不允许拉取线上完整数据库到测试环境（解决方案见http://www.xskh.club/envmanage/）    
+</code></pre><h3 id="企业流程控制"><a href="#企业流程控制" class="headerlink" title="企业流程控制"></a>企业流程控制</h3><h3 id="审计平台"><a href="#审计平台" class="headerlink" title="审计平台"></a>审计平台</h3><pre><code>应用日志审计
 线上服务器操作审计
 线上sql审计
-</code></pre><h2 id="3、安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）"><a href="#3、安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）" class="headerlink" title="3、安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）"></a>3、安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）</h2><h5 id="3-1、后端安全产品"><a href="#3-1、后端安全产品" class="headerlink" title="3.1、后端安全产品"></a>3.1、后端安全产品</h5><h6 id="白名单，黑名单"><a href="#白名单，黑名单" class="headerlink" title="白名单，黑名单"></a>白名单，黑名单</h6><h6 id="频率控制，防拖库"><a href="#频率控制，防拖库" class="headerlink" title="频率控制，防拖库"></a>频率控制，防拖库</h6><h6 id="数据加密"><a href="#数据加密" class="headerlink" title="数据加密"></a>数据加密</h6><h6 id="入侵检测系统"><a href="#入侵检测系统" class="headerlink" title="入侵检测系统"></a>入侵检测系统</h6><h6 id="漏洞检测系统"><a href="#漏洞检测系统" class="headerlink" title="漏洞检测系统"></a>漏洞检测系统</h6><h6 id="处置引擎"><a href="#处置引擎" class="headerlink" title="处置引擎"></a>处置引擎</h6><h6 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h6><h5 id="3-2、前端安全产品"><a href="#3-2、前端安全产品" class="headerlink" title="3.2、前端安全产品"></a>3.2、前端安全产品</h5><h6 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h6><h2 id="4、业务安全及反欺诈（这块应该是属于运营部门的安全）"><a href="#4、业务安全及反欺诈（这块应该是属于运营部门的安全）" class="headerlink" title="4、业务安全及反欺诈（这块应该是属于运营部门的安全）"></a>4、业务安全及反欺诈（这块应该是属于运营部门的安全）</h2><h5 id="安全策略"><a href="#安全策略" class="headerlink" title="安全策略"></a>安全策略</h5><h5 id="安全运营"><a href="#安全运营" class="headerlink" title="安全运营"></a>安全运营</h5>
+</code></pre><h2 id="安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）"><a href="#安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）" class="headerlink" title="安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）"></a>安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）</h2><h3 id="后端安全产品"><a href="#后端安全产品" class="headerlink" title="后端安全产品"></a>后端安全产品</h3><pre><code>白名单，黑名单
+频率控制，防拖库
+数据加密
+入侵检测系统
+漏洞检测系统
+处置引擎
+数据备份
+</code></pre><h3 id="前端安全产品"><a href="#前端安全产品" class="headerlink" title="前端安全产品"></a>前端安全产品</h3><pre><code>验证码
+人脸识别
+</code></pre><h2 id="业务安全及反欺诈（这块应该是属于运营部门的安全）"><a href="#业务安全及反欺诈（这块应该是属于运营部门的安全）" class="headerlink" title="业务安全及反欺诈（这块应该是属于运营部门的安全）"></a>业务安全及反欺诈（这块应该是属于运营部门的安全）</h2><h3 id="安全策略"><a href="#安全策略" class="headerlink" title="安全策略"></a>安全策略</h3><pre><code>略
+</code></pre><h3 id="安全运营"><a href="#安全运营" class="headerlink" title="安全运营"></a>安全运营</h3><pre><code>略
+</code></pre>
       
     </div>
 
@@ -630,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、系统安全"><span class="nav-number">1.</span> <span class="nav-text">1、系统安全</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础架构与网络安全"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">基础架构与网络安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用安全"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">应用安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统安全"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">系统安全</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、信息及内控安全"><span class="nav-number">2.</span> <span class="nav-text">2、信息及内控安全</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#企业安全制度"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">企业安全制度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#企业流程控制"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">企业流程控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#审计平台"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">审计平台</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）"><span class="nav-number">3.</span> <span class="nav-text">3、安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1、后端安全产品"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">3.1、后端安全产品</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#白名单，黑名单"><span class="nav-number">3.0.0.1.1.</span> <span class="nav-text">白名单，黑名单</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#频率控制，防拖库"><span class="nav-number">3.0.0.1.2.</span> <span class="nav-text">频率控制，防拖库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据加密"><span class="nav-number">3.0.0.1.3.</span> <span class="nav-text">数据加密</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#入侵检测系统"><span class="nav-number">3.0.0.1.4.</span> <span class="nav-text">入侵检测系统</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#漏洞检测系统"><span class="nav-number">3.0.0.1.5.</span> <span class="nav-text">漏洞检测系统</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#处置引擎"><span class="nav-number">3.0.0.1.6.</span> <span class="nav-text">处置引擎</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据备份"><span class="nav-number">3.0.0.1.7.</span> <span class="nav-text">数据备份</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2、前端安全产品"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">3.2、前端安全产品</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#验证码"><span class="nav-number">3.0.0.2.1.</span> <span class="nav-text">验证码</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、业务安全及反欺诈（这块应该是属于运营部门的安全）"><span class="nav-number">4.</span> <span class="nav-text">4、业务安全及反欺诈（这块应该是属于运营部门的安全）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安全策略"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">安全策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安全运营"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">安全运营</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统安全"><span class="nav-number">1.</span> <span class="nav-text">系统安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础架构与网络安全"><span class="nav-number">1.1.</span> <span class="nav-text">基础架构与网络安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用安全"><span class="nav-number">1.2.</span> <span class="nav-text">应用安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统安全-1"><span class="nav-number">1.3.</span> <span class="nav-text">系统安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息及内控安全"><span class="nav-number">2.</span> <span class="nav-text">信息及内控安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#企业安全制度"><span class="nav-number">2.1.</span> <span class="nav-text">企业安全制度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#企业流程控制"><span class="nav-number">2.2.</span> <span class="nav-text">企业流程控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#审计平台"><span class="nav-number">2.3.</span> <span class="nav-text">审计平台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）"><span class="nav-number">3.</span> <span class="nav-text">安全产品（不完全是独立的系统，包括很多程序设计时应该考虑的安全问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后端安全产品"><span class="nav-number">3.1.</span> <span class="nav-text">后端安全产品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端安全产品"><span class="nav-number">3.2.</span> <span class="nav-text">前端安全产品</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务安全及反欺诈（这块应该是属于运营部门的安全）"><span class="nav-number">4.</span> <span class="nav-text">业务安全及反欺诈（这块应该是属于运营部门的安全）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安全策略"><span class="nav-number">4.1.</span> <span class="nav-text">安全策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全运营"><span class="nav-number">4.2.</span> <span class="nav-text">安全运营</span></a></li></ol></li></ol></div>
             
 
           </div>
