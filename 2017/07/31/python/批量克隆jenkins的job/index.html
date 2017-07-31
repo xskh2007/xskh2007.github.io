@@ -95,13 +95,13 @@
 
 
 
-<meta name="description" content="添加一个job创建一个mavn项目  修改job配置如图：">
+<meta name="description" content="添加一个job创建一个mavn项目  修改job配置如图：  找到需要克隆的job配置文件cd /data/jenkins_data/jobs/xiasha_AAA_cms  [root@jenkins xiasha_AAA_cms]# ll total 20 drwxr-x--- 13 root root 4096 Jul 24 19:40 builds -rw-r-----  1 root">
 <meta name="keywords" content="jenkins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="批量克隆jenkins的job">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/python/批量克隆jenkins的job/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="添加一个job创建一个mavn项目  修改job配置如图：">
+<meta property="og:description" content="添加一个job创建一个mavn项目  修改job配置如图：  找到需要克隆的job配置文件cd /data/jenkins_data/jobs/xiasha_AAA_cms  [root@jenkins xiasha_AAA_cms]# ll total 20 drwxr-x--- 13 root root 4096 Jul 24 19:40 builds -rw-r-----  1 root">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/create_job.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/1.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/2.jpg">
@@ -109,10 +109,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/4.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/5.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/6.jpg">
-<meta property="og:updated_time" content="2017-07-31T08:53:15.907Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/jieguo.jpg">
+<meta property="og:updated_time" content="2017-07-31T09:09:39.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="批量克隆jenkins的job">
-<meta name="twitter:description" content="添加一个job创建一个mavn项目  修改job配置如图：">
+<meta name="twitter:description" content="添加一个job创建一个mavn项目  修改job配置如图：  找到需要克隆的job配置文件cd /data/jenkins_data/jobs/xiasha_AAA_cms  [root@jenkins xiasha_AAA_cms]# ll total 20 drwxr-x--- 13 root root 4096 Jul 24 19:40 builds -rw-r-----  1 root">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/create_job.jpg">
 
 
@@ -405,6 +406,182 @@
         <!-- toc -->
 <h2 id="添加一个job"><a href="#添加一个job" class="headerlink" title="添加一个job"></a>添加一个job</h2><h3 id="创建一个mavn项目"><a href="#创建一个mavn项目" class="headerlink" title="创建一个mavn项目"></a>创建一个mavn项目</h3><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/create_job.jpg" alt="Screenshot"> </p>
 <h3 id="修改job配置如图："><a href="#修改job配置如图：" class="headerlink" title="修改job配置如图："></a>修改job配置如图：</h3><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/1.jpg" alt="Screenshot"><br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/2.jpg" alt="Screenshot"><br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/3.jpg" alt="Screenshot"><br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/4.jpg" alt="Screenshot"><br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/5.jpg" alt="Screenshot"><br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/6.jpg" alt="Screenshot"> </p>
+<h2 id="找到需要克隆的job配置文件"><a href="#找到需要克隆的job配置文件" class="headerlink" title="找到需要克隆的job配置文件"></a>找到需要克隆的job配置文件</h2><pre><code>cd /data/jenkins_data/jobs/xiasha_AAA_cms
+
+[root@jenkins xiasha_AAA_cms]# ll
+total 20
+drwxr-x--- 13 root root 4096 Jul 24 19:40 builds
+-rw-r-----  1 root root 5876 Jul 24 19:38 config.xml
+lrwxrwxrwx  1 root root   22 Jul 24 19:39 lastStable -&gt; builds/lastStableBuild
+lrwxrwxrwx  1 root root   26 Jul 24 19:39 lastSuccessful -&gt; builds/lastSuccessfulBuild
+drwxr-x---  7 root root 4096 Jul 21 11:53 modules
+-rw-r-----  1 root root    3 Jul 24 19:39 nextBuildNumber
+[root@jenkins xiasha_AAA_cms]# vim config.xml 
+[root@jenkins xiasha_AAA_cms]# pwd
+/data/jenkins_data/jobs/xiasha_AAA_cms
+[root@jenkins xiasha_AAA_cms]# cat config.xml
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;maven2-moduleset plugin=&quot;maven-plugin@2.17&quot;&gt;
+  &lt;actions/&gt;
+  &lt;description&gt;&lt;/description&gt;
+  &lt;keepDependencies&gt;false&lt;/keepDependencies&gt;
+  &lt;properties&gt;
+    &lt;hudson.model.ParametersDefinitionProperty&gt;
+      &lt;parameterDefinitions&gt;
+        &lt;hudson.model.StringParameterDefinition&gt;
+          &lt;name&gt;model&lt;/name&gt;
+          &lt;description&gt;&lt;/description&gt;
+          &lt;defaultValue&gt;cms&lt;/defaultValue&gt;
+        &lt;/hudson.model.StringParameterDefinition&gt;
+        &lt;net.uaznia.lukanus.hudson.plugins.gitparameter.GitParameterDefinition plugin=&quot;git-parameter@0.8.0&quot;&gt;
+          &lt;name&gt;branch&lt;/name&gt;
+          &lt;description&gt;&lt;/description&gt;
+          &lt;uuid&gt;9d451b9b-9c6b-46ae-93be-636c522bac6f&lt;/uuid&gt;
+          &lt;type&gt;PT_BRANCH_TAG&lt;/type&gt;
+          &lt;branch&gt;&lt;/branch&gt;
+          &lt;tagFilter&gt;*&lt;/tagFilter&gt;
+          &lt;branchFilter&gt;.*&lt;/branchFilter&gt;
+          &lt;sortMode&gt;NONE&lt;/sortMode&gt;
+          &lt;defaultValue&gt;&lt;/defaultValue&gt;
+          &lt;selectedValue&gt;NONE&lt;/selectedValue&gt;
+          &lt;quickFilterEnabled&gt;false&lt;/quickFilterEnabled&gt;
+        &lt;/net.uaznia.lukanus.hudson.plugins.gitparameter.GitParameterDefinition&gt;
+      &lt;/parameterDefinitions&gt;
+    &lt;/hudson.model.ParametersDefinitionProperty&gt;
+  &lt;/properties&gt;
+  &lt;scm class=&quot;hudson.plugins.git.GitSCM&quot; plugin=&quot;git@2.5.3&quot;&gt;
+    &lt;configVersion&gt;2&lt;/configVersion&gt;
+    &lt;userRemoteConfigs&gt;
+      &lt;hudson.plugins.git.UserRemoteConfig&gt;
+        &lt;url&gt;git@gitlab.lark.wiki:nbgold/${model}.git&lt;/url&gt;
+        &lt;credentialsId&gt;e646bdce-28d6-4a65-a169-f1a916517b24&lt;/credentialsId&gt;
+      &lt;/hudson.plugins.git.UserRemoteConfig&gt;
+    &lt;/userRemoteConfigs&gt;
+    &lt;branches&gt;
+      &lt;hudson.plugins.git.BranchSpec&gt;
+        &lt;name&gt;$branch&lt;/name&gt;
+      &lt;/hudson.plugins.git.BranchSpec&gt;
+    &lt;/branches&gt;
+    &lt;doGenerateSubmoduleConfigurations&gt;false&lt;/doGenerateSubmoduleConfigurations&gt;
+    &lt;submoduleCfg class=&quot;list&quot;/&gt;
+    &lt;extensions/&gt;
+  &lt;/scm&gt;
+  &lt;canRoam&gt;true&lt;/canRoam&gt;
+  &lt;disabled&gt;false&lt;/disabled&gt;
+  &lt;blockBuildWhenDownstreamBuilding&gt;false&lt;/blockBuildWhenDownstreamBuilding&gt;
+  &lt;blockBuildWhenUpstreamBuilding&gt;false&lt;/blockBuildWhenUpstreamBuilding&gt;
+  &lt;jdk&gt;(System)&lt;/jdk&gt;
+  &lt;triggers/&gt;
+  &lt;concurrentBuild&gt;false&lt;/concurrentBuild&gt;
+  &lt;rootModule&gt;
+    &lt;groupId&gt;com.zzjr&lt;/groupId&gt;
+    &lt;artifactId&gt;cms&lt;/artifactId&gt;
+  &lt;/rootModule&gt;
+  &lt;goals&gt;clean install -Dmaven.test.skip=true&lt;/goals&gt;
+  &lt;aggregatorStyleBuild&gt;true&lt;/aggregatorStyleBuild&gt;
+  &lt;incrementalBuild&gt;false&lt;/incrementalBuild&gt;
+  &lt;ignoreUpstremChanges&gt;false&lt;/ignoreUpstremChanges&gt;
+  &lt;ignoreUnsuccessfulUpstreams&gt;false&lt;/ignoreUnsuccessfulUpstreams&gt;
+  &lt;archivingDisabled&gt;false&lt;/archivingDisabled&gt;
+  &lt;siteArchivingDisabled&gt;false&lt;/siteArchivingDisabled&gt;
+  &lt;fingerprintingDisabled&gt;false&lt;/fingerprintingDisabled&gt;
+  &lt;resolveDependencies&gt;false&lt;/resolveDependencies&gt;
+  &lt;processPlugins&gt;false&lt;/processPlugins&gt;
+  &lt;mavenValidationLevel&gt;-1&lt;/mavenValidationLevel&gt;
+  &lt;runHeadless&gt;false&lt;/runHeadless&gt;
+  &lt;disableTriggerDownstreamProjects&gt;false&lt;/disableTriggerDownstreamProjects&gt;
+  &lt;blockTriggerWhenBuilding&gt;true&lt;/blockTriggerWhenBuilding&gt;
+  &lt;settings class=&quot;jenkins.mvn.DefaultSettingsProvider&quot;/&gt;
+  &lt;globalSettings class=&quot;jenkins.mvn.DefaultGlobalSettingsProvider&quot;/&gt;
+  &lt;reporters/&gt;
+  &lt;publishers/&gt;
+  &lt;buildWrappers/&gt;
+  &lt;prebuilders/&gt;
+  &lt;postbuilders&gt;
+    &lt;jenkins.plugins.publish__over__ssh.BapSshBuilderPlugin plugin=&quot;publish-over-ssh@1.14&quot;&gt;
+      &lt;delegate&gt;
+        &lt;consolePrefix&gt;SSH: &lt;/consolePrefix&gt;
+        &lt;delegate&gt;
+          &lt;publishers&gt;
+            &lt;jenkins.plugins.publish__over__ssh.BapSshPublisher&gt;
+              &lt;configName&gt;ansible&lt;/configName&gt;
+              &lt;verbose&gt;false&lt;/verbose&gt;
+              &lt;transfers&gt;
+                &lt;jenkins.plugins.publish__over__ssh.BapSshTransfer&gt;
+                  &lt;remoteDirectory&gt;&lt;/remoteDirectory&gt;
+                  &lt;sourceFiles&gt;${model}-webapp/target/*.war&lt;/sourceFiles&gt;
+                  &lt;excludes&gt;&lt;/excludes&gt;
+                  &lt;removePrefix&gt;&lt;/removePrefix&gt;
+                  &lt;remoteDirectorySDF&gt;false&lt;/remoteDirectorySDF&gt;
+                  &lt;flatten&gt;true&lt;/flatten&gt;
+                  &lt;cleanRemote&gt;false&lt;/cleanRemote&gt;
+                  &lt;noDefaultExcludes&gt;false&lt;/noDefaultExcludes&gt;
+                  &lt;makeEmptyDirs&gt;false&lt;/makeEmptyDirs&gt;
+                  &lt;patternSeparator&gt;[, ]+&lt;/patternSeparator&gt;
+                  &lt;execCommand&gt;ansible ${model}_xsy_01 -m shell -a &amp;quot;mkdir -p /data/webapps/&amp;quot; --sudo 
+ansible ${model}_xsy_01 -m shell -a &amp;quot;echo &amp;apos;zkserver=xxl01.niubangold.com:2181,xxl02.niubangold.com:2181,xxl03.niubangold.com:2181&amp;apos;&amp;gt;/data/webapps/xxl-conf.properties&amp;quot; --sudo 
+ansible ${model}_xsy_01 -m shell -a &amp;quot;service tomcat stop&amp;quot; --sudo
+ansible ${model}_xsy_01 -m shell -a &amp;quot;rm -rf /usr/local/tomcat/webapps/*&amp;quot; --sudo
+
+ansible ${model}_xsy_01 -m copy -a &amp;quot;src=/usr/local/war/${model}.war dest=/usr/local/tomcat/webapps/ROOT.war&amp;quot; --sudo
+
+ansible ${model}_xsy_01 -m shell -a &amp;quot;service tomcat start&amp;quot; --sudo&lt;/execCommand&gt;
+                  &lt;execTimeout&gt;120000&lt;/execTimeout&gt;
+                  &lt;usePty&gt;false&lt;/usePty&gt;
+                &lt;/jenkins.plugins.publish__over__ssh.BapSshTransfer&gt;
+              &lt;/transfers&gt;
+              &lt;useWorkspaceInPromotion&gt;false&lt;/useWorkspaceInPromotion&gt;
+              &lt;usePromotionTimestamp&gt;false&lt;/usePromotionTimestamp&gt;
+            &lt;/jenkins.plugins.publish__over__ssh.BapSshPublisher&gt;
+          &lt;/publishers&gt;
+          &lt;continueOnError&gt;false&lt;/continueOnError&gt;
+          &lt;failOnError&gt;false&lt;/failOnError&gt;
+          &lt;alwaysPublishFromMaster&gt;false&lt;/alwaysPublishFromMaster&gt;
+          &lt;hostConfigurationAccess class=&quot;jenkins.plugins.publish_over_ssh.BapSshPublisherPlugin&quot; reference=&quot;../..&quot;/&gt;
+        &lt;/delegate&gt;
+      &lt;/delegate&gt;
+    &lt;/jenkins.plugins.publish__over__ssh.BapSshBuilderPlugin&gt;
+  &lt;/postbuilders&gt;
+  &lt;runPostStepsIfResult&gt;
+    &lt;name&gt;FAILURE&lt;/name&gt;
+    &lt;ordinal&gt;2&lt;/ordinal&gt;
+    &lt;color&gt;RED&lt;/color&gt;
+    &lt;completeBuild&gt;true&lt;/completeBuild&gt;
+  &lt;/runPostStepsIfResult&gt;
+&lt;/maven2-moduleset&gt;
+</code></pre><h2 id="新建脚本"><a href="#新建脚本" class="headerlink" title="新建脚本"></a>新建脚本</h2><pre><code>#!/usr/bin/env python
+# -*- coding:utf-8 -*- 
+#Author: qiantu
+#qq 261767353
+
+import jenkins
+giturl=&quot;git@gitlab.lark.wiki:nbgold/&quot;
+template_xml=&quot;jenkins_job.xml&quot;
+view_name = &quot;xiasha_BBB_&quot;
+server = jenkins.Jenkins(&apos;http://192.168.2.169:8080/jenkins/&apos;, username=&apos;admin&apos;, password=&apos;zzjr#2015&apos;)
+
+import xml.etree.cElementTree as ET
+job_list=[&quot;cms&quot;,&quot;pay&quot;,&quot;member&quot;,&quot;weapon&quot;,&quot;trade&quot;,&quot;wealth&quot;,&quot;statistics&quot;,&quot;bops&quot;,&quot;napp&quot;,&quot;site&quot;,&quot;crm&quot;,&quot;channel&quot;,&quot;tiger&quot;,&quot;rams&quot;,&quot;activity&quot;,&quot;api&quot;,&quot;eagle&quot;,&quot;squirrel&quot;,&quot;wap&quot;,&quot;dragon&quot;,&quot;tengu&quot;]
+tree = ET.ElementTree(file=template_xml)
+
+def create_job_file(model):
+    for ele in tree.iterfind(&quot;properties/hudson.model.ParametersDefinitionProperty/parameterDefinitions/hudson.model.StringParameterDefinition/defaultValue&quot;):
+        ele.text=model
+        ele.set(&quot;updated&quot;,&quot;up&quot;)
+    for ele in tree.iterfind(&quot;scm/userRemoteConfigs/hudson.plugins.git.UserRemoteConfig/url&quot;):
+        ele.text=giturl+model+&quot;.git&quot;
+        ele.set(&quot;updated&quot;,&quot;up&quot;)
+    file_name=&quot;jenkins_job_&quot;+model+&quot;.xml&quot;
+    tree.write(file_name)
+    return open(file_name).read()
+
+for i in job_list:
+    EMPTY_JOB_CONFIG=create_job_file(i)
+    # print EMPTY_JOB_CONFIG
+
+    new_job = server.create_job(view_name+i, EMPTY_JOB_CONFIG)
+    # del_job=server.delete_job(view_name+i)
+</code></pre><h2 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h2><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/python/jieguo.jpg" alt="Screenshot"> </p>
 
       
     </div>
@@ -600,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加一个job"><span class="nav-number">1.</span> <span class="nav-text">添加一个job</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个mavn项目"><span class="nav-number">1.1.</span> <span class="nav-text">创建一个mavn项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改job配置如图："><span class="nav-number">1.2.</span> <span class="nav-text">修改job配置如图：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加一个job"><span class="nav-number">1.</span> <span class="nav-text">添加一个job</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个mavn项目"><span class="nav-number">1.1.</span> <span class="nav-text">创建一个mavn项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改job配置如图："><span class="nav-number">1.2.</span> <span class="nav-text">修改job配置如图：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到需要克隆的job配置文件"><span class="nav-number">2.</span> <span class="nav-text">找到需要克隆的job配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建脚本"><span class="nav-number">3.</span> <span class="nav-text">新建脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行结果："><span class="nav-number">4.</span> <span class="nav-text">运行结果：</span></a></li></ol></div>
             
 
           </div>
