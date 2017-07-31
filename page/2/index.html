@@ -858,7 +858,7 @@ git crlf换行符的问题解决git使用中遇到的换行符问题总结问题
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/zabbix/zabbix3.2.1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/iptable/用iptables实现单网卡做网关上网/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qiantu">
@@ -877,7 +877,7 @@ git crlf换行符的问题解决git使用中遇到的换行符问题总结问题
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/15/zabbix/zabbix3.2.1/" itemprop="url">zabbix3.2.1分布式监控，采用agent主动模式</a></h1>
+                <a class="post-title-link" href="/2017/06/15/iptable/用iptables实现单网卡做网关上网/" itemprop="url">用iptables实现单网卡做网关上网</a></h1>
         
 
         <div class="post-meta">
@@ -912,8 +912,8 @@ git crlf换行符的问题解决git使用中遇到的换行符问题总结问题
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/zabbix/" itemprop="url" rel="index">
-                    <span itemprop="name">zabbix</span>
+                  <a href="/categories/iptables/" itemprop="url" rel="index">
+                    <span itemprop="name">iptables</span>
                   </a>
                 </span>
 
@@ -949,12 +949,11 @@ git crlf换行符的问题解决git使用中遇到的换行符问题总结问题
         
           
           
-zabbix3.2.1分布式监控，采用agent主动模式有点：1、分布式，全部agent先提交到各个机房的zabbix_proxy，再有zabbix_proxy提交到到server，减少                    zabbix_server压力
-服务端 安装参考  Zabbix 3.2
+测试环境，配置iptables的服务器A的ip：172.16.81.156，默认网关172.16.80.1；网段192.168.1.0/24通过交换机与A机连通；A主机只有一块网卡eth0，主要的配置就是在单网卡上绑定一个虚拟ip，在通过iptables规则将192.168.1.0/24段的源ip
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/15/zabbix/zabbix3.2.1/#more" rel="contents">
+            <a class="btn" href="/2017/06/15/iptable/用iptables实现单网卡做网关上网/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1437,7 +1436,7 @@ Hbase集群搭建注意点Hbase端口 60010
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/cloud/cloud/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/git/git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qiantu">
@@ -1456,7 +1455,7 @@ Hbase集群搭建注意点Hbase端口 60010
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/15/cloud/cloud/" itemprop="url">kvm虚拟化管理平台WebVirtMgr部署-完整记录(1)</a></h1>
+                <a class="post-title-link" href="/2017/06/15/git/git/" itemprop="url">快速安装 GitLab 并汉化</a></h1>
         
 
         <div class="post-meta">
@@ -1491,8 +1490,8 @@ Hbase集群搭建注意点Hbase端口 60010
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kvm/" itemprop="url" rel="index">
-                    <span itemprop="name">kvm</span>
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
                   </a>
                 </span>
 
@@ -1528,11 +1527,12 @@ Hbase集群搭建注意点Hbase端口 60010
         
           
           
-kvm虚拟化管理平台WebVirtMgr部署-完整记录(1)公司机房有一台2U的服务器（64G内存，32核），由于近期新增业务比较多，测试机也要新增，服务器资源十分有限。所以打算在这台2U服务器上部署kvm虚拟化，虚出多台VM出来，以应对新的测试需求。当KVM宿主机越来越多，需要对宿主机的状态进行
+原文：  http://www.jianshu.com/p/7a0d6917e009
+快速安装 GitLab 并汉化源码安装 GitLab 步骤繁琐：需要安装依赖包，Mysql，Redis，Postfix，Ruby，Nginx……安装完毕还得一个个手动配置这些软件。源码安装容易出错，不顺利的话，一
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/15/cloud/cloud/#more" rel="contents">
+            <a class="btn" href="/2017/06/15/git/git/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1765,7 +1765,7 @@ kvm虚拟化管理平台WebVirtMgr部署-完整记录(1)公司机房有一台2U�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
