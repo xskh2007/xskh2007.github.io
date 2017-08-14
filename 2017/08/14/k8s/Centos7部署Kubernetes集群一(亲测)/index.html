@@ -1,0 +1,1058 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="MAbZIIQ7Dw" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="k8s," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="环境介绍及准备：操作系统(物理机,虚拟机都可以)操作系统采用Centos7.3 64位，细节如下。 [root@k8s-master ~]# uname -a Linux k8s-master 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux [root@k8s-">
+<meta name="keywords" content="k8s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7部署Kubernetes集群一(亲测)">
+<meta property="og:url" content="http://yoursite.com/2017/08/14/k8s/Centos7部署Kubernetes集群一(亲测)/index.html">
+<meta property="og:site_name" content="向山看海">
+<meta property="og:description" content="环境介绍及准备：操作系统(物理机,虚拟机都可以)操作系统采用Centos7.3 64位，细节如下。 [root@k8s-master ~]# uname -a Linux k8s-master 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux [root@k8s-">
+<meta property="og:updated_time" content="2017-08-14T03:45:12.502Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos7部署Kubernetes集群一(亲测)">
+<meta name="twitter:description" content="环境介绍及准备：操作系统(物理机,虚拟机都可以)操作系统采用Centos7.3 64位，细节如下。 [root@k8s-master ~]# uname -a Linux k8s-master 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux [root@k8s-">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/14/k8s/Centos7部署Kubernetes集群一(亲测)/"/>
+
+
+
+
+
+  <title>Centos7部署Kubernetes集群一(亲测) | 向山看海</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向山看海</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zjump">
+          <a href="/zjump/" rel="section">
+            
+            zjump
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-envmanage">
+          <a href="/envmanage/" rel="section">
+            
+            envmanage
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            
+            读书
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/k8s/Centos7部署Kubernetes集群一(亲测)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qiantu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向山看海">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Centos7部署Kubernetes集群一(亲测)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T10:38:16+08:00">
+                2017-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s/" itemprop="url" rel="index">
+                    <span itemprop="name">k8s</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/08/14/k8s/Centos7部署Kubernetes集群一(亲测)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="环境介绍及准备："><a href="#环境介绍及准备：" class="headerlink" title="环境介绍及准备："></a>环境介绍及准备：</h2><h3 id="操作系统-物理机-虚拟机都可以"><a href="#操作系统-物理机-虚拟机都可以" class="headerlink" title="操作系统(物理机,虚拟机都可以)"></a>操作系统(物理机,虚拟机都可以)</h3><p>操作系统采用Centos7.3 64位，细节如下。</p>
+<pre><code>[root@k8s-master ~]# uname -a
+Linux k8s-master 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+[root@k8s-master ~]# cat /etc/redhat-release 
+CentOS Linux release 7.3.1611 (Core) 
+</code></pre><h3 id="主机信息"><a href="#主机信息" class="headerlink" title="主机信息"></a>主机信息</h3><pre><code>本文准备了三台机器用于部署k8s的运行环境，细节如下：
+</code></pre><table>
+<thead>
+<tr>
+<th>节点及功能</th>
+<th>主机名</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Master、etcd、registry</td>
+<td>K8s-master</td>
+<td>192.168.4.155</td>
+</tr>
+<tr>
+<td>Node1</td>
+<td>K8s-node-1</td>
+<td>192.168.4.156</td>
+</tr>
+<tr>
+<td>Node2</td>
+<td>K8s-node-2</td>
+<td>192.168.4.157</td>
+</tr>
+</tbody>
+</table>
+<p>设置三台机器的主机名：<br>Master上执行：<br>    [root@localhost ~]#  hostnamectl –static set-hostname  k8s-master<br>Node1上执行：<br>    [root@localhost ~]# hostnamectl –static set-hostname  k8s-node-1<br>Node2上执行：<br>    [root@localhost ~]# hostnamectl –static set-hostname  k8s-node-2</p>
+<p>在三台机器上设置hosts，均执行如下命令：</p>
+<pre><code>echo &apos;192.168.4.155    k8s-master
+192.168.4.155   etcd
+192.168.4.155   registry
+192.168.4.156   k8s-node-1
+192.168.4.157    k8s-node-2&apos; &gt;&gt; /etc/hosts
+</code></pre><h3 id="关闭三台机器上的防火墙"><a href="#关闭三台机器上的防火墙" class="headerlink" title="关闭三台机器上的防火墙"></a>关闭三台机器上的防火墙</h3><pre><code>systemctl disable firewalld.service
+systemctl stop firewalld.service
+</code></pre><h2 id="部署etcd"><a href="#部署etcd" class="headerlink" title="部署etcd"></a>部署etcd</h2><p>k8s运行依赖etcd，需要先部署etcd，本文采用yum方式安装：</p>
+<pre><code>[root@localhost ~]# yum install etcd -y
+</code></pre><p>yum安装的etcd默认配置文件在/etc/etcd/etcd.conf。编辑配置文件，更改以下信息：<br>ETCD_NAME=master<br>ETCD_LISTEN_CLIENT_URLS=”<a href="http://0.0.0.0:2379,http://0.0.0.0:4001" target="_blank" rel="external">http://0.0.0.0:2379,http://0.0.0.0:4001</a>“<br>ETCD_ADVERTISE_CLIENT_URLS=”<a href="http://etcd:2379,http://etcd:4001" target="_blank" rel="external">http://etcd:2379,http://etcd:4001</a>“</p>
+<pre><code>[root@localhost ~]# vi /etc/etcd/etcd.conf
+# [member]
+ETCD_NAME=master
+ETCD_DATA_DIR=&quot;/var/lib/etcd/default.etcd&quot;
+#ETCD_WAL_DIR=&quot;&quot;
+#ETCD_SNAPSHOT_COUNT=&quot;10000&quot;
+#ETCD_HEARTBEAT_INTERVAL=&quot;100&quot;
+#ETCD_ELECTION_TIMEOUT=&quot;1000&quot;
+#ETCD_LISTEN_PEER_URLS=&quot;http://0.0.0.0:2380&quot;
+ETCD_LISTEN_CLIENT_URLS=&quot;http://0.0.0.0:2379,http://0.0.0.0:4001&quot;
+#ETCD_MAX_SNAPSHOTS=&quot;5&quot;
+#ETCD_MAX_WALS=&quot;5&quot;
+#ETCD_CORS=&quot;&quot;
+#
+#[cluster]
+#ETCD_INITIAL_ADVERTISE_PEER_URLS=&quot;http://localhost:2380&quot;
+# if you use different ETCD_NAME (e.g. test), set ETCD_INITIAL_CLUSTER value for this name, i.e. &quot;test=http://...&quot;
+#ETCD_INITIAL_CLUSTER=&quot;default=http://localhost:2380&quot;
+#ETCD_INITIAL_CLUSTER_STATE=&quot;new&quot;
+#ETCD_INITIAL_CLUSTER_TOKEN=&quot;etcd-cluster&quot;
+ETCD_ADVERTISE_CLIENT_URLS=&quot;http://etcd:2379,http://etcd:4001&quot;
+#ETCD_DISCOVERY=&quot;&quot;
+#ETCD_DISCOVERY_SRV=&quot;&quot;
+#ETCD_DISCOVERY_FALLBACK=&quot;proxy&quot;
+#ETCD_DISCOVERY_PROXY=&quot;&quot;
+</code></pre><p>启动并验证状态</p>
+<pre><code>[root@localhost ~]# systemctl start etcd
+[root@localhost ~]#  etcdctl set testdir/testkey0 0
+0
+[root@localhost ~]#  etcdctl get testdir/testkey0 
+0
+[root@localhost ~]# etcdctl -C http://etcd:4001 cluster-health
+member 8e9e05c52164694d is healthy: got healthy result from http://0.0.0.0:2379
+cluster is healthy
+[root@localhost ~]# etcdctl -C http://etcd:2379 cluster-health
+member 8e9e05c52164694d is healthy: got healthy result from http://0.0.0.0:2379
+cluster is healthy
+</code></pre><p>扩展：Etcd集群部署参见——<a href="http://www.cnblogs.com/zhenyuyaodidiao/p/6237019.html" target="_blank" rel="external">http://www.cnblogs.com/zhenyuyaodidiao/p/6237019.html</a></p>
+<h2 id="部署master"><a href="#部署master" class="headerlink" title="部署master"></a>部署master</h2><h3 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h3><pre><code>[root@k8s-master ~]# yum install docker
+</code></pre><p>配置Docker配置文件，使其允许从registry中拉取镜像。增加如下一行：<br>OPTIONS=’–insecure-registry registry:5000’</p>
+<pre><code>[root@k8s-master ~]# vim /etc/sysconfig/docker
+
+# /etc/sysconfig/docker
+
+# Modify these options if you want to change the way the docker daemon runs
+OPTIONS=&apos;--selinux-enabled --log-driver=journald --signature-verification=false&apos;
+if [ -z &quot;${DOCKER_CERT_PATH}&quot; ]; then
+    DOCKER_CERT_PATH=/etc/docker
+fi
+
+OPTIONS=&apos;--insecure-registry registry:5000&apos;
+</code></pre><p>设置开机自启动并开启服务</p>
+<pre><code>[root@k8s-master ~]# chkconfig docker on
+[root@k8s-master ~]# service docker start
+</code></pre><h3 id="安装kubernets"><a href="#安装kubernets" class="headerlink" title="安装kubernets"></a>安装kubernets</h3><pre><code>[root@k8s-master ~]# yum install kubernetes
+</code></pre><h3 id="配置并启动kubernetes"><a href="#配置并启动kubernetes" class="headerlink" title="配置并启动kubernetes"></a>配置并启动kubernetes</h3><p>在kubernetes master上需要运行以下组件：<br>　　　　Kubernets API Server<br>　　　　Kubernets Controller Manager<br>　　　　Kubernets Scheduler<br>相应的要更改以下几个配置中带颜色部分信息：</p>
+<h4 id="修改-etc-kubernetes-apiserver"><a href="#修改-etc-kubernetes-apiserver" class="headerlink" title="修改 /etc/kubernetes/apiserver"></a>修改 /etc/kubernetes/apiserver</h4><p>KUBE_API_ADDRESS=”–insecure-bind-address=0.0.0.0”<br>KUBE_API_PORT=”–port=8080”<br>KUBE_ETCD_SERVERS=”–etcd-servers=<a href="http://etcd:2379" target="_blank" rel="external">http://etcd:2379</a>“<br>KUBE_ADMISSION_CONTROL=”–admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota”</p>
+<pre><code>[root@k8s-master ~]# vim /etc/kubernetes/apiserver
+
+###
+# kubernetes system config
+#
+# The following values are used to configure the kube-apiserver
+#
+
+# The address on the local server to listen to.
+KUBE_API_ADDRESS=&quot;--insecure-bind-address=0.0.0.0&quot;
+
+# The port on the local server to listen on.
+KUBE_API_PORT=&quot;--port=8080&quot;
+
+# Port minions listen on
+# KUBELET_PORT=&quot;--kubelet-port=10250&quot;
+
+# Comma separated list of nodes in the etcd cluster
+KUBE_ETCD_SERVERS=&quot;--etcd-servers=http://etcd:2379&quot;
+
+# Address range to use for services
+KUBE_SERVICE_ADDRESSES=&quot;--service-cluster-ip-range=10.254.0.0/16&quot;
+
+# default admission control policies
+#KUBE_ADMISSION_CONTROL=&quot;--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota&quot;
+KUBE_ADMISSION_CONTROL=&quot;--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota&quot;
+
+# Add your own!
+KUBE_API_ARGS=&quot;&quot;
+</code></pre><h4 id="修改-etc-kubernetes-config"><a href="#修改-etc-kubernetes-config" class="headerlink" title="修改/etc/kubernetes/config"></a>修改/etc/kubernetes/config</h4><p>KUBE_MASTER=”–master=<a href="http://k8s-master:8080" target="_blank" rel="external">http://k8s-master:8080</a>“</p>
+<pre><code>[root@k8s-master ~]# vim /etc/kubernetes/config
+
+###
+# kubernetes system config
+#
+# The following values are used to configure various aspects of all
+# kubernetes services, including
+#
+#   kube-apiserver.service
+#   kube-controller-manager.service
+#   kube-scheduler.service
+#   kubelet.service
+#   kube-proxy.service
+# logging to stderr means we get it in the systemd journal
+KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+
+# journal message level, 0 is debug
+KUBE_LOG_LEVEL=&quot;--v=0&quot;
+
+# Should this cluster be allowed to run privileged docker containers
+KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;
+
+# How the controller-manager, scheduler, and proxy find the apiserver
+KUBE_MASTER=&quot;--master=http://k8s-master:8080&quot;
+</code></pre><h4 id="启动服务并设置开机自启动"><a href="#启动服务并设置开机自启动" class="headerlink" title="启动服务并设置开机自启动"></a>启动服务并设置开机自启动</h4><pre><code>[root@k8s-master ~]# systemctl enable kube-apiserver.service
+[root@k8s-master ~]# systemctl start kube-apiserver.service
+[root@k8s-master ~]# systemctl enable kube-controller-manager.service
+[root@k8s-master ~]# systemctl start kube-controller-manager.service
+[root@k8s-master ~]# systemctl enable kube-scheduler.service
+[root@k8s-master ~]# systemctl start kube-scheduler.service
+</code></pre><h2 id="部署node"><a href="#部署node" class="headerlink" title="部署node"></a>部署node</h2><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>　　参见3.1</p>
+<h3 id="安装kubernets-1"><a href="#安装kubernets-1" class="headerlink" title="安装kubernets"></a>安装kubernets</h3><p>　　参见3.2</p>
+<h3 id="配置并启动kubernetes-1"><a href="#配置并启动kubernetes-1" class="headerlink" title="配置并启动kubernetes"></a>配置并启动kubernetes</h3><p>在kubernetes node上需要运行以下组件：<br>Kubelet<br>Kubernets Proxy<br>相应的要更改以下几个配置文中信息：</p>
+<h4 id="修改-etc-kubernetes-config-1"><a href="#修改-etc-kubernetes-config-1" class="headerlink" title="修改 /etc/kubernetes/config"></a>修改 /etc/kubernetes/config</h4><p>KUBE_MASTER=”–master=<a href="http://k8s-master:8080" target="_blank" rel="external">http://k8s-master:8080</a>“</p>
+<pre><code>[root@K8s-node-1 ~]# vim /etc/kubernetes/config
+
+###
+# kubernetes system config
+#
+# The following values are used to configure various aspects of all
+# kubernetes services, including
+#
+#   kube-apiserver.service
+#   kube-controller-manager.service
+#   kube-scheduler.service
+#   kubelet.service
+#   kube-proxy.service
+# logging to stderr means we get it in the systemd journal
+KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+
+# journal message level, 0 is debug
+KUBE_LOG_LEVEL=&quot;--v=0&quot;
+
+# Should this cluster be allowed to run privileged docker containers
+KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;
+
+# How the controller-manager, scheduler, and proxy find the apiserver
+KUBE_MASTER=&quot;--master=http://k8s-master:8080&quot;
+</code></pre><h4 id="修改-etc-kubernetes-kubelet"><a href="#修改-etc-kubernetes-kubelet" class="headerlink" title="修改/etc/kubernetes/kubelet"></a>修改/etc/kubernetes/kubelet</h4><p>KUBELET_ADDRESS=”–address=0.0.0.0”<br>KUBELET_HOSTNAME=”–hostname-override=k8s-node-1” (注意第二台要写 k8s-node-2)<br>KUBELET_API_SERVER=”–api-servers=<a href="http://k8s-master:8080" target="_blank" rel="external">http://k8s-master:8080</a>“</p>
+<pre><code>[root@K8s-node-1 ~]# vim /etc/kubernetes/kubelet
+
+###
+# kubernetes kubelet (minion) config
+
+# The address for the info server to serve on (set to 0.0.0.0 or &quot;&quot; for all interfaces)
+KUBELET_ADDRESS=&quot;--address=0.0.0.0&quot;
+
+# The port for the info server to serve on
+# KUBELET_PORT=&quot;--port=10250&quot;
+
+# You may leave this blank to use the actual hostname
+KUBELET_HOSTNAME=&quot;--hostname-override=k8s-node-1&quot;
+
+# location of the api-server
+KUBELET_API_SERVER=&quot;--api-servers=http://k8s-master:8080&quot;
+
+# pod infrastructure container
+KUBELET_POD_INFRA_CONTAINER=&quot;--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest&quot;
+
+# Add your own!
+KUBELET_ARGS=&quot;&quot;
+</code></pre><p>启动服务并设置开机自启动</p>
+<pre><code>[root@k8s-master ~]# systemctl enable kubelet.service
+[root@k8s-master ~]# systemctl start kubelet.service
+[root@k8s-master ~]# systemctl enable kube-proxy.service
+[root@k8s-master ~]# systemctl start kube-proxy.service
+</code></pre><h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><p>在master上查看集群中节点及节点状态</p>
+<pre><code>[root@k8s-master ~]#  kubectl -s http://k8s-master:8080 get node
+NAME         STATUS    AGE
+k8s-node-1   Ready     3m
+k8s-node-2   Ready     16s
+[root@k8s-master ~]# kubectl get nodes
+NAME         STATUS    AGE
+k8s-node-1   Ready     3m
+k8s-node-2   Ready     43s
+</code></pre><p>至此，已经搭建了一个kubernetes集群，但目前该集群还不能很好的工作，请继续后续的步骤。</p>
+<h2 id="创建覆盖网络——Flannel"><a href="#创建覆盖网络——Flannel" class="headerlink" title="创建覆盖网络——Flannel"></a>创建覆盖网络——Flannel</h2><h3 id="安装Flannel"><a href="#安装Flannel" class="headerlink" title="安装Flannel"></a>安装Flannel</h3><p>在master、node上均执行如下命令，进行安装</p>
+<pre><code>[root@k8s-master ~]# yum install flannel
+</code></pre><h3 id="配置Flannel"><a href="#配置Flannel" class="headerlink" title="配置Flannel"></a>配置Flannel</h3><p>master、node上均编辑/etc/sysconfig/flanneld，修改红色部分</p>
+<pre><code>[root@k8s-master ~]# vi /etc/sysconfig/flanneld
+
+# Flanneld configuration options
+
+# etcd url location.  Point this to the server where etcd runs
+FLANNEL_ETCD_ENDPOINTS=&quot;http://etcd:2379&quot;
+
+# etcd config key.  This is the configuration key that flannel queries
+# For address range assignment
+FLANNEL_ETCD_PREFIX=&quot;/atomic.io/network&quot;
+
+# Any additional options that you want to pass
+#FLANNEL_OPTIONS=&quot;&quot;
+</code></pre><h3 id="配置etcd中关于flannel的key"><a href="#配置etcd中关于flannel的key" class="headerlink" title="配置etcd中关于flannel的key"></a>配置etcd中关于flannel的key</h3><p>Flannel使用Etcd进行配置，来保证多个Flannel实例之间的配置一致性，所以需要在etcd上进行如下配置：<br>（‘/atomic.io/network/config’这个key与上文/etc/sysconfig/flannel中的配置项FLANNEL_ETCD_PREFIX是相对应的，<br>错误的话启动就会出错）</p>
+<pre><code>[root@k8s-master ~]# etcdctl mk /atomic.io/network/config &apos;{ &quot;Network&quot;: &quot;10.0.0.0/16&quot; }&apos;
+{ &quot;Network&quot;: &quot;10.0.0.0/16&quot; }
+</code></pre><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>启动Flannel之后，需要依次重启docker、kubernete。<br>在master执行：</p>
+<pre><code>systemctl enable flanneld.service 
+systemctl start flanneld.service 
+service docker restart
+systemctl restart kube-apiserver.service
+systemctl restart kube-controller-manager.service
+systemctl restart kube-scheduler.service
+</code></pre><p>在node上执行：</p>
+<pre><code>systemctl enable flanneld.service 
+systemctl start flanneld.service 
+service docker restart
+systemctl restart kubelet.service
+systemctl restart kube-proxy.service
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/k8s/" rel="tag"># k8s</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/14/k8s/基于kubernetes集群部署DashBoard二(亲测)/" rel="next" title="基于kubernetes集群部署DashBoard二(亲测)">
+                <i class="fa fa-chevron-left"></i> 基于kubernetes集群部署DashBoard二(亲测)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="qiantu" />
+          <p class="site-author-name" itemprop="name">qiantu</p>
+           
+              <p class="site-description motion-element" itemprop="description">You think you can, you can.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cclouds.me/" title="cclouds" target="_blank">cclouds</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境介绍及准备："><span class="nav-number">1.</span> <span class="nav-text">环境介绍及准备：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统-物理机-虚拟机都可以"><span class="nav-number">1.1.</span> <span class="nav-text">操作系统(物理机,虚拟机都可以)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主机信息"><span class="nav-number">1.2.</span> <span class="nav-text">主机信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭三台机器上的防火墙"><span class="nav-number">1.3.</span> <span class="nav-text">关闭三台机器上的防火墙</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署etcd"><span class="nav-number">2.</span> <span class="nav-text">部署etcd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署master"><span class="nav-number">3.</span> <span class="nav-text">部署master</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Docker"><span class="nav-number">3.1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装kubernets"><span class="nav-number">3.2.</span> <span class="nav-text">安装kubernets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置并启动kubernetes"><span class="nav-number">3.3.</span> <span class="nav-text">配置并启动kubernetes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-etc-kubernetes-apiserver"><span class="nav-number">3.3.1.</span> <span class="nav-text">修改 /etc/kubernetes/apiserver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-etc-kubernetes-config"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改/etc/kubernetes/config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动服务并设置开机自启动"><span class="nav-number">3.3.3.</span> <span class="nav-text">启动服务并设置开机自启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署node"><span class="nav-number">4.</span> <span class="nav-text">部署node</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装docker"><span class="nav-number">4.1.</span> <span class="nav-text">安装docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装kubernets-1"><span class="nav-number">4.2.</span> <span class="nav-text">安装kubernets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置并启动kubernetes-1"><span class="nav-number">4.3.</span> <span class="nav-text">配置并启动kubernetes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-etc-kubernetes-config-1"><span class="nav-number">4.3.1.</span> <span class="nav-text">修改 /etc/kubernetes/config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-etc-kubernetes-kubelet"><span class="nav-number">4.3.2.</span> <span class="nav-text">修改/etc/kubernetes/kubelet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看状态"><span class="nav-number">4.4.</span> <span class="nav-text">查看状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建覆盖网络——Flannel"><span class="nav-number">5.</span> <span class="nav-text">创建覆盖网络——Flannel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Flannel"><span class="nav-number">5.1.</span> <span class="nav-text">安装Flannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Flannel"><span class="nav-number">5.2.</span> <span class="nav-text">配置Flannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置etcd中关于flannel的key"><span class="nav-number">5.3.</span> <span class="nav-text">配置etcd中关于flannel的key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">5.4.</span> <span class="nav-text">启动</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qiantu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "b587eae6d1cc415a82e921c882914d85",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
