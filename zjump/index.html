@@ -1,645 +1,410 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-  <meta name="baidu-site-verification" content="MAbZIIQ7Dw" />
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
-
-
-
-<meta name="description" content="项目开发背景由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，   没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。   所以本人就写了dbtool这个web数据库管理后台。   项目开发目标web端数据查询 web端sql检测，保证每次线上执行的sql准确性，时实性 每次检测sql将在从库执行，但不commi">
-<meta name="keywords" content="zjump">
+  <meta name="description" content="项目开发背景由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，   没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。   所以本人就写了dbtool这个web数据库管理后台。    项目开发目标web端数据查询 web端sql检测，保证每次线上执行的sql准确性，时实性 每次检测sql将在从库执行，但不c">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zjump">
 <meta property="og:url" content="http://yoursite.com/zjump/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="项目开发背景由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，   没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。   所以本人就写了dbtool这个web数据库管理后台。   项目开发目标web端数据查询 web端sql检测，保证每次线上执行的sql准确性，时实性 每次检测sql将在从库执行，但不commi">
+<meta property="og:description" content="项目开发背景由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，   没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。   所以本人就写了dbtool这个web数据库管理后台。    项目开发目标web端数据查询 web端sql检测，保证每次线上执行的sql准确性，时实性 每次检测sql将在从库执行，但不c">
+<meta property="og:locale">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/select.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/check.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/submit.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/deail_list.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/deail.png">
-<meta property="og:updated_time" content="2017-06-19T03:02:31.420Z">
+<meta property="article:published_time" content="2017-06-15T06:17:27.000Z">
+<meta property="article:modified_time" content="2023-12-05T02:19:43.415Z">
+<meta property="article:author" content="qiantu">
+<meta property="article:tag" content="zjump">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zjump">
-<meta name="twitter:description" content="项目开发背景由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，   没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。   所以本人就写了dbtool这个web数据库管理后台。   项目开发目标web端数据查询 web端sql检测，保证每次线上执行的sql准确性，时实性 每次检测sql将在从库执行，但不commi">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/select.jpg">
 
+<link rel="canonical" href="http://yoursite.com/zjump/">
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-Hans'
   };
 </script>
 
+  <title>zjump | 向山看海
+</title>
+  
 
 
-  <link rel="canonical" href="http://yoursite.com/zjump/"/>
 
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-  <title>zjump | 向山看海</title>
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">向山看海</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">向山看海</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
         <li class="menu-item menu-item-zjump">
-          <a href="/zjump/" rel="section">
-            
-            zjump
-          </a>
-        </li>
-      
-        
+
+    <a href="/zjump/" rel="section"><i class="fa fa-zjump fa-fw"></i>zjump</a>
+
+  </li>
         <li class="menu-item menu-item-envmanage">
-          <a href="/envmanage/" rel="section">
-            
-            envmanage
-          </a>
-        </li>
-      
-        
+
+    <a href="/envmanage/" rel="section"><i class="fa fa-envmanage fa-fw"></i>envmanage</a>
+
+  </li>
         <li class="menu-item menu-item-nginxadmin">
-          <a href="/nginxadmin/" rel="section">
-            
-            nginxadmin
-          </a>
-        </li>
-      
-        
+
+    <a href="/nginxadmin/" rel="section"><i class="fa fa-nginxadmin fa-fw"></i>nginxadmin</a>
+
+  </li>
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
+
+    <a href="/categories/" rel="section"><i class="fa fa-archives fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-        
+
+    <a href="/archives/" rel="section"><i class="fa fa-zjump fa-fw"></i>归档</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-            关于
-          </a>
-        </li>
-      
-        
+
+    <a href="/about/" rel="section"><i class="fa fa-about fa-fw"></i>关于</a>
+
+  </li>
         <li class="menu-item menu-item-books">
-          <a href="/books/" rel="section">
-            
-            读书
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/books/" rel="section"><i class="fa fa-books fa-fw"></i>books</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+  
+  
+
+          <div class="content page posts-expand">
             
 
-  <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
+    
+    
+    <div class="post-block" lang="zh-Hans">
+      <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">zjump</h1>
+<h1 class="post-title" itemprop="name headline">zjump
+</h1>
 
+<div class="post-meta">
+  
 
+</div>
 
 </header>
 
-    
-    
-      <!-- toc -->
+      
+      
+      
+      <div class="post-body">
+          <!-- toc -->
+
+
+
 <h2 id="项目开发背景"><a href="#项目开发背景" class="headerlink" title="项目开发背景"></a>项目开发背景</h2><pre><code>由于最近线上补单，数据修改，等人工操作频繁。每次都要发邮件手动执行，很容易导致出错，  
 没有很好的历史纪录。而且浪费时间。虽然后台系统在不停完善，但是那些功能都是死的，无法针对所有sql。  
 所以本人就写了dbtool这个web数据库管理后台。  
-</code></pre><h2 id="项目开发目标"><a href="#项目开发目标" class="headerlink" title="项目开发目标"></a>项目开发目标</h2><pre><code>web端数据查询
+</code></pre>
+<h2 id="项目开发目标"><a href="#项目开发目标" class="headerlink" title="项目开发目标"></a>项目开发目标</h2><pre><code>web端数据查询
 web端sql检测，保证每次线上执行的sql准确性，时实性
 每次检测sql将在从库执行，但不commit，返回sql将会影响的行数，sql执行状态等。然后rollback。
 开发提交sql，主管审核，最后运维确认执行或者作废。所有sql提交，审核，执行。等状态记录。（后续添加更详细的流程，比如修改数据超过1000行需要总监审核等）
 Sql执行时间记录
 统计哪些表修改最频繁，说明涉及该表的需要优化（后续计划）
 Sql语法高亮(后续计划)
-</code></pre><h2 id="项目的开发方法"><a href="#项目的开发方法" class="headerlink" title="项目的开发方法"></a>项目的开发方法</h2><pre><code>本系统采用在jumpserver开源堡垒机上面二次开发。省去大量开发时间。  
+</code></pre>
+<h2 id="项目的开发方法"><a href="#项目的开发方法" class="headerlink" title="项目的开发方法"></a>项目的开发方法</h2><pre><code>本系统采用在jumpserver开源堡垒机上面二次开发。省去大量开发时间。  
 登陆，权限验证等都采用jumpserver的。快速实现公司需要的功能  
-</code></pre><h2 id="项目用到的知识"><a href="#项目用到的知识" class="headerlink" title="项目用到的知识"></a>项目用到的知识</h2><pre><code>Python,django, tornado,javascript, jquery,easyui等  
-</code></pre><h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><pre><code>Git 地址  https://github.com/xskh2007/zjump 
+</code></pre>
+<h2 id="项目用到的知识"><a href="#项目用到的知识" class="headerlink" title="项目用到的知识"></a>项目用到的知识</h2><pre><code>Python,django, tornado,javascript, jquery,easyui等  
+</code></pre>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><pre><code>Git 地址  https://github.com/xskh2007/zjump 
 QQ群：391096485
-</code></pre><h2 id="项目心得"><a href="#项目心得" class="headerlink" title="项目心得"></a>项目心得</h2><pre><code>这是我第一次做项目，也是第一次二次开发开源项目，在这之前我甚至不会jq，不会js,但是看看网上demo,依葫芦画瓢也算实现基本功能了。
+</code></pre>
+<h2 id="项目心得"><a href="#项目心得" class="headerlink" title="项目心得"></a>项目心得</h2><pre><code>这是我第一次做项目，也是第一次二次开发开源项目，在这之前我甚至不会jq，不会js,但是看看网上demo,依葫芦画瓢也算实现基本功能了。
 我觉的看别人的代码对提高自己有很大帮助。有一次跟一同事聊高中学习的事，他说他以前都不会写作文，至从跟语文课代表坐一起，
 看了他的作文后，忽然恍然大悟，原来作文可以这么写。其实都是套路，写代码也差不多。jumpserver的注释并不是很多，但命名还是能看出大概作用。
-</code></pre><h2 id="项目功能附图"><a href="#项目功能附图" class="headerlink" title="项目功能附图"></a>项目功能附图</h2><h4 id="线上sql查询界面"><a href="#线上sql查询界面" class="headerlink" title="线上sql查询界面"></a>线上sql查询界面</h4><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/select.jpg" alt="Screenshot"> </p>
+</code></pre>
+<h2 id="项目功能附图"><a href="#项目功能附图" class="headerlink" title="项目功能附图"></a>项目功能附图</h2><h4 id="线上sql查询界面"><a href="#线上sql查询界面" class="headerlink" title="线上sql查询界面"></a>线上sql查询界面</h4><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/select.jpg" alt="Screenshot"> </p>
 <h4 id="线上sql检测界面"><a href="#线上sql检测界面" class="headerlink" title="线上sql检测界面"></a>线上sql检测界面</h4><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/check.png" alt="Screenshot"> </p>
 <h4 id="线上sql提交界面"><a href="#线上sql提交界面" class="headerlink" title="线上sql提交界面"></a>线上sql提交界面</h4><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/submit.png" alt="Screenshot"> </p>
 <h4 id="线上sql操作界面，可以执行，和作废"><a href="#线上sql操作界面，可以执行，和作废" class="headerlink" title="线上sql操作界面，可以执行，和作废"></a>线上sql操作界面，可以执行，和作废</h4><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/deail_list.png" alt="Screenshot"> </p>
 <h4 id="具体sql查看界面"><a href="#具体sql查看界面" class="headerlink" title="具体sql查看界面"></a>具体sql查看界面</h4><p><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/zjump/deail.png" alt="Screenshot"> </p>
 
+      </div>
+      
+      
+      
+    </div>
     
-  </div>
+
+    
+    
+    
 
 
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    
-  </div>
-
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="qiantu" />
-          <p class="site-author-name" itemprop="name">qiantu</p>
-           
-              <p class="site-description motion-element" itemprop="description">You think you can, you can.</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cclouds.me/" title="cclouds" target="_blank">cclouds</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-        
-
-
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目开发背景"><span class="nav-number">1.</span> <span class="nav-text">项目开发背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目开发目标"><span class="nav-number">2.</span> <span class="nav-text">项目开发目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目的开发方法"><span class="nav-number">3.</span> <span class="nav-text">项目的开发方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目用到的知识"><span class="nav-number">4.</span> <span class="nav-text">项目用到的知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目地址"><span class="nav-number">5.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目心得"><span class="nav-number">6.</span> <span class="nav-text">项目心得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目功能附图"><span class="nav-number">7.</span> <span class="nav-text">项目功能附图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线上sql查询界面"><span class="nav-number">7.0.1.</span> <span class="nav-text">线上sql查询界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线上sql检测界面"><span class="nav-number">7.0.2.</span> <span class="nav-text">线上sql检测界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线上sql提交界面"><span class="nav-number">7.0.3.</span> <span class="nav-text">线上sql提交界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线上sql操作界面，可以执行，和作废"><span class="nav-number">7.0.4.</span> <span class="nav-text">线上sql操作界面，可以执行，和作废</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体sql查看界面"><span class="nav-number">7.0.5.</span> <span class="nav-text">具体sql查看界面</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">项目开发背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">项目开发目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">项目的开发方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%94%A8%E5%88%B0%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="nav-number">4.</span> <span class="nav-text">项目用到的知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="nav-number">5.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%BF%83%E5%BE%97"><span class="nav-number">6.</span> <span class="nav-text">项目心得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E9%99%84%E5%9B%BE"><span class="nav-number">7.</span> <span class="nav-text">项目功能附图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8Asql%E6%9F%A5%E8%AF%A2%E7%95%8C%E9%9D%A2"><span class="nav-number">7.0.1.</span> <span class="nav-text">线上sql查询界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8Asql%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2"><span class="nav-number">7.0.2.</span> <span class="nav-text">线上sql检测界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8Asql%E6%8F%90%E4%BA%A4%E7%95%8C%E9%9D%A2"><span class="nav-number">7.0.3.</span> <span class="nav-text">线上sql提交界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8Asql%E6%93%8D%E4%BD%9C%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%89%A7%E8%A1%8C%EF%BC%8C%E5%92%8C%E4%BD%9C%E5%BA%9F"><span class="nav-number">7.0.4.</span> <span class="nav-text">线上sql操作界面，可以执行，和作废</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93sql%E6%9F%A5%E7%9C%8B%E7%95%8C%E9%9D%A2"><span class="nav-number">7.0.5.</span> <span class="nav-text">具体sql查看界面</span></a></li></ol></li></ol></li></ol></div>
+      </div>
       <!--/noindex-->
-      
 
-      
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qiantu</p>
+  <div class="site-description" itemprop="description">You think you can, you can.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        
+
+        
+
+<div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">qiantu</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>访问总量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
 
 
-        
+
+
+
+
+
+
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+<script src="/js/utils.js"></script>
 
-
-
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/muse.js"></script>
 
 
-
-
-  
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
 
 
 
 
 
-  
-    
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "b587eae6d1cc415a82e921c882914d85",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
-  
 
 
 
@@ -652,22 +417,7 @@ QQ群：391096485
 
   
 
-
-
-
-
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 </body>
 </html>

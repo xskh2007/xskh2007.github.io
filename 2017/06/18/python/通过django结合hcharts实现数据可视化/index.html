@@ -1,412 +1,253 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-  <meta name="baidu-site-verification" content="MAbZIIQ7Dw" />
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="hcharts," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
-
-
-
-<meta name="description" content="我们都知道现在到处都是轮子，但是还想自己去造一个属于自己的轮子，所以自己在学习django的同时也尝试模仿着别人造轮子。django怎么样就不说了，让别人度娘去吧； 通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。 本文基于Centos7下虚拟环境安装：Python3.5.2实现； Ip地址：1">
-<meta name="keywords" content="hcharts">
+  <meta name="description" content="我们都知道现在到处都是轮子，但是还想自己去造一个属于自己的轮子，所以自己在学习django的同时也尝试模仿着别人造轮子。django怎么样就不说了，让别人度娘去吧；  通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。 本文基于Centos7下虚拟环境安装：Python3.5.2实现； Ip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过django结合hcharts实现数据可视化">
-<meta property="og:url" content="http://yoursite.com/2017/06/18/python/通过django结合hcharts实现数据可视化/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/python/%E9%80%9A%E8%BF%87django%E7%BB%93%E5%90%88hcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="我们都知道现在到处都是轮子，但是还想自己去造一个属于自己的轮子，所以自己在学习django的同时也尝试模仿着别人造轮子。django怎么样就不说了，让别人度娘去吧； 通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。 本文基于Centos7下虚拟环境安装：Python3.5.2实现； Ip地址：1">
+<meta property="og:description" content="我们都知道现在到处都是轮子，但是还想自己去造一个属于自己的轮子，所以自己在学习django的同时也尝试模仿着别人造轮子。django怎么样就不说了，让别人度娘去吧；  通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。 本文基于Centos7下虚拟环境安装：Python3.5.2实现； Ip">
+<meta property="og:locale">
 <meta property="og:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/anything/1_111719_1.jpg">
-<meta property="og:updated_time" content="2017-07-18T02:40:50.964Z">
+<meta property="article:published_time" content="2017-06-18T11:17:27.000Z">
+<meta property="article:modified_time" content="2023-12-05T02:19:43.396Z">
+<meta property="article:author" content="qiantu">
+<meta property="article:tag" content="hcharts">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通过django结合hcharts实现数据可视化">
-<meta name="twitter:description" content="我们都知道现在到处都是轮子，但是还想自己去造一个属于自己的轮子，所以自己在学习django的同时也尝试模仿着别人造轮子。django怎么样就不说了，让别人度娘去吧； 通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。 本文基于Centos7下虚拟环境安装：Python3.5.2实现； Ip地址：1">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/anything/1_111719_1.jpg">
 
+<link rel="canonical" href="http://yoursite.com/2017/06/18/python/%E9%80%9A%E8%BF%87django%E7%BB%93%E5%90%88hcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2017/06/18/python/通过django结合hcharts实现数据可视化/"/>
-
-
-
-
-
   <title>通过django结合hcharts实现数据可视化 | 向山看海</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">向山看海</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">向山看海</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
         <li class="menu-item menu-item-zjump">
-          <a href="/zjump/" rel="section">
-            
-            zjump
-          </a>
-        </li>
-      
-        
+
+    <a href="/zjump/" rel="section"><i class="fa fa-zjump fa-fw"></i>zjump</a>
+
+  </li>
         <li class="menu-item menu-item-envmanage">
-          <a href="/envmanage/" rel="section">
-            
-            envmanage
-          </a>
-        </li>
-      
-        
+
+    <a href="/envmanage/" rel="section"><i class="fa fa-envmanage fa-fw"></i>envmanage</a>
+
+  </li>
         <li class="menu-item menu-item-nginxadmin">
-          <a href="/nginxadmin/" rel="section">
-            
-            nginxadmin
-          </a>
-        </li>
-      
-        
+
+    <a href="/nginxadmin/" rel="section"><i class="fa fa-nginxadmin fa-fw"></i>nginxadmin</a>
+
+  </li>
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
+
+    <a href="/categories/" rel="section"><i class="fa fa-archives fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-        
+
+    <a href="/archives/" rel="section"><i class="fa fa-zjump fa-fw"></i>归档</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-            关于
-          </a>
-        </li>
-      
-        
+
+    <a href="/about/" rel="section"><i class="fa fa-about fa-fw"></i>关于</a>
+
+  </li>
         <li class="menu-item menu-item-books">
-          <a href="/books/" rel="section">
-            
-            读书
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/books/" rel="section"><i class="fa fa-books fa-fw"></i>books</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/python/通过django结合hcharts实现数据可视化/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/python/%E9%80%9A%E8%BF%87django%E7%BB%93%E5%90%88hcharts%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="qiantu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="You think you can, you can.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="向山看海">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">通过django结合hcharts实现数据可视化</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          通过django结合hcharts实现数据可视化
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T19:17:27+08:00">
-                2017-06-18
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hcharts/" itemprop="url" rel="index">
-                    <span itemprop="name">hcharts</span>
-                  </a>
-                </span>
-
-                
-                
-              
+              <time title="创建时间：2017-06-18 19:17:27" itemprop="dateCreated datePublished" datetime="2017-06-18T19:17:27+08:00">2017-06-18</time>
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/18/python/通过django结合hcharts实现数据可视化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-12-05 10:19:43" itemprop="dateModified" datetime="2023-12-05T10:19:43+08:00">2023-12-05</time>
               </span>
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hcharts/" itemprop="url" rel="index"><span itemprop="name">hcharts</span></a>
+                </span>
             </span>
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <!-- toc -->
+
+
+
 <pre><code>我们都知道现在到处都是轮子，但是还想自己去造一个属于自己的轮子，所以自己在学习django的同时也尝试模仿着别人造轮子。django怎么样就不说了，让别人度娘去吧；
-</code></pre><p>通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。</p>
+</code></pre>
+<p>通过django结合hcharts动态展现内存使用率，实现单机内存监控效果，因为度娘里的echarts文档相对难看懂，觉得hcharts实现比较简单。</p>
 <p>本文基于Centos7下虚拟环境安装：Python3.5.2实现；</p>
 <p>Ip地址：10.0.10.250</p>
 <p>运行环境：</p>
@@ -434,47 +275,54 @@ six (1.10.0)
 traitlets (4.3.2) 
 wcwidth (0.1.7) 
 wheel (0.29.0) 
-</code></pre><p>其实很多实验之所以会失败大部分都是软件的版本和兼容性不同导致，本文是参考了51reboot的内存可视化演变而来，只是我使用了自己最近学习的django来实现前端展现。</p>
+</code></pre>
+<p>其实很多实验之所以会失败大部分都是软件的版本和兼容性不同导致，本文是参考了51reboot的内存可视化演变而来，只是我使用了自己最近学习的django来实现前端展现。</p>
 <p>1、创建一个project：</p>
 <pre><code>django-admin startproject memory 
-</code></pre><p>2、进入memory目录下并创建一个app：</p>
+</code></pre>
+<p>2、进入memory目录下并创建一个app：</p>
 <pre><code>cd memory &amp;&amp; django-admin startapp blog 
-</code></pre><p>3、创建两个目录，static和templates，一个存放静态页面和静态文件如js、css；</p>
+</code></pre>
+<p>3、创建两个目录，static和templates，一个存放静态页面和静态文件如js、css；</p>
 <pre><code>mkdir static templates 
-</code></pre><p>查看目录结构：</p>
+</code></pre>
+<p>查看目录结构：</p>
 <pre><code>(py35env) [root@jupyter ~]# tree -d memory/ -L 1 
 memory/ 
 ├── blog 
 ├── memory 
 ├── static 
 └── templates 
-</code></pre><p>使用这个图形，并把html代码里的4个js文件下载到static/js下：<a href="https://www.hcharts.cn/demo/highstock/spline" target="_blank" rel="external">https://www.hcharts.cn/demo/highstock/spline</a></p>
+</code></pre>
+<p>使用这个图形，并把html代码里的4个js文件下载到static&#x2F;js下：<a href="https://www.hcharts.cn/demo/highstock/spline">https://www.hcharts.cn/demo/highstock/spline</a></p>
 <p>jquery-1.8.3.min.js、highstock.js、exporting.js、highcharts-zh_CN.js</p>
-<p>4、接下来配置一下memory/setting.py：</p>
-<pre><code>28 ALLOWED_HOSTS = [&apos;*&apos;]            #改成&apos;*&apos;                                                 
-
+<p>4、接下来配置一下memory&#x2F;setting.py：</p>
+<pre><code>28 ALLOWED_HOSTS = [&#39;*&#39;]            #改成&#39;*&#39;                                                 
+ 
 55 TEMPLATES = [                                                                     
-56     {                                                                             
-57         &apos;BACKEND&apos;: &apos;django.template.backends.django.DjangoTemplates&apos;,             
-58         &apos;DIRS&apos;: [                                                                 
-59             os.path.join(BASE_DIR, &apos;templates&apos;),        #加入这一行，html文件的目录                          
+56     &#123;                                                                             
+57         &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,             
+58         &#39;DIRS&#39;: [                                                                 
+59             os.path.join(BASE_DIR, &#39;templates&#39;),        #加入这一行，html文件的目录                          
 60         ],                                                                        
-61         &apos;APP_DIRS&apos;: True,                                                         
-62         &apos;OPTIONS&apos;: {                                                              
-63             &apos;context_processors&apos;: [                                               
-64                 &apos;django.template.context_processors.debug&apos;,                       
-65                 &apos;django.template.context_processors.request&apos;,                     
-66                 &apos;django.contrib.auth.context_processors.auth&apos;,                    
-67                 &apos;django.contrib.messages.context_processors.messages&apos;,            
+61         &#39;APP_DIRS&#39;: True,                                                         
+62         &#39;OPTIONS&#39;: &#123;                                                              
+63             &#39;context_processors&#39;: [                                               
+64                 &#39;django.template.context_processors.debug&#39;,                       
+65                 &#39;django.template.context_processors.request&#39;,                     
+66                 &#39;django.contrib.auth.context_processors.auth&#39;,                    
+67                 &#39;django.contrib.messages.context_processors.messages&#39;,            
 68             ],                                                                    
-69         },                                                                        
-70     },                                                                            
+69         &#125;,                                                                        
+70     &#125;,                                                                            
 71 ] 
-</code></pre><p>最后面添加，静态js和CSS文件的存放目录：</p>
+</code></pre>
+<p>最后面添加，静态js和CSS文件的存放目录：</p>
 <pre><code>124 STATICFILES_DIRS = (                                                                                                                                     
-125     os.path.join(BASE_DIR, &apos;static&apos;),                                             
+125     os.path.join(BASE_DIR, &#39;static&#39;),                                             
 126 )  
-</code></pre><p>5、配置blog/views.py文件：</p>
+</code></pre>
+<p>5、配置blog&#x2F;views.py文件：</p>
 <pre><code>#!/usr/bin/env python3                                                               
 # -*- coding:UTF-8 -*-                                                               
 from django.shortcuts import render                                                  
@@ -482,22 +330,22 @@ from django.http import HttpResponse
 import pymysql as mysql                                                              
 import json                                                                          
 import requests                                                                      
-
+                                                                                     
 # Create your views here.                                                            
 tmp_time = 0                                                                         
-con = mysql.connect(user=&apos;dba&apos;,passwd=&apos;123456&apos;,host=&apos;localhost&apos;,db=&apos;memory&apos;)         
+con = mysql.connect(user=&#39;dba&#39;,passwd=&#39;123456&#39;,host=&#39;localhost&#39;,db=&#39;memory&#39;)         
 con.autocommit(True)                                                                 
 cur = con.cursor()                                                                   
-
+                                                                                     
 def index(request):                                                                  
-    return render(request, &apos;demo.html&apos;)                                              
-
+    return render(request, &#39;demo.html&#39;)                                              
+                                                                                     
 def data(request):                                                                                                                                            
     global tmp_time                                                                  
     if tmp_time&gt;0:                                                                   
-        sql = &apos;select * from memory where time&gt;%s&apos; %(tmp_time/1000)                  
+        sql = &#39;select * from memory where time&gt;%s&#39; %(tmp_time/1000)                  
     else:                                                                            
-        sql = &apos;select * from memory&apos;                                                 
+        sql = &#39;select * from memory&#39;                                                 
     cur.execute(sql)                                                                 
     arr = []                                                                         
     for i in cur.fetchall():                                                         
@@ -505,447 +353,283 @@ def data(request):
     if len(arr)&gt;0:                                                                   
         tmp_time = arr[-1][0]                                                        
     return HttpResponse(json.dumps(arr))  
-</code></pre><p>6、配置url.py文件：</p>
+</code></pre>
+<p>6、配置url.py文件：</p>
 <pre><code>16 from django.conf.urls import url                                                  
  17 from django.contrib import admin                                                  
  18 from blog import views as blog_views          #引入blog里的views文件，并定义一个别名；                                    
  19                                                                                   
  20 urlpatterns = [                                                                   
- 21     url(r&apos;^admin/&apos;, admin.site.urls),                                             
- 22     url(r&apos;^$&apos;, blog_views.index),      #以下两行为加入内容                                           
- 23     url(r&apos;^data/&apos;,blog_views.data),                                                                                                                          
+ 21     url(r&#39;^admin/&#39;, admin.site.urls),                                             
+ 22     url(r&#39;^$&#39;, blog_views.index),      #以下两行为加入内容                                           
+ 23     url(r&#39;^data/&#39;,blog_views.data),                                                                                                                          
  24 ]         
-</code></pre><p>7、 接下来创建一个静态html文件，也就是views.py里定义的demo.html文件：<br>(py35env) [root@jupyter memory]# vim templates/demo.html </p>
-<pre><code>{% load static %}       #引入static目录下的静态文件要先加入此行 
+</code></pre>
+<p>7、 接下来创建一个静态html文件，也就是views.py里定义的demo.html文件：<br>(py35env) [root@jupyter memory]# vim templates&#x2F;demo.html </p>
+<pre><code>&#123;% load static %&#125;       #引入static目录下的静态文件要先加入此行 
 &lt;!DOCTYPE html&gt; 
 &lt;html lang=&quot;en&quot;&gt; 
 &lt;head&gt; 
     &lt;meta charset=&quot;UTF-8&quot;&gt; 
     &lt;title&gt;内存监控信息&lt;/title&gt; 
-    &lt;script src=&quot;{% static 'js/jquery-1.8.3.min.js' %}&quot;&gt;&lt;/script&gt; 
-    &lt;script src=&quot;{% static 'js/highstock.js' %}&quot;&gt;&lt;/script&gt; 
-    &lt;script src=&quot;{% static 'js/exporting.js' %}&quot;&gt;&lt;/script&gt; 
-    &lt;script src=&quot;{% static 'js/highcharts-zh_CN.js' %}&quot;&gt;&lt;/script&gt; 
+    &lt;script src=&quot;&#123;% static 'js/jquery-1.8.3.min.js' %&#125;&quot;&gt;&lt;/script&gt; 
+    &lt;script src=&quot;&#123;% static 'js/highstock.js' %&#125;&quot;&gt;&lt;/script&gt; 
+    &lt;script src=&quot;&#123;% static 'js/exporting.js' %&#125;&quot;&gt;&lt;/script&gt; 
+    &lt;script src=&quot;&#123;% static 'js/highcharts-zh_CN.js' %&#125;&quot;&gt;&lt;/script&gt; 
 &lt;/head&gt; 
 &lt;body&gt; 
     &lt;div id=&quot;container&quot; style=&quot;min-width:400px; height:400px&quot;&gt;&lt;/div&gt; 
     &lt;script&gt; 
-            $(function () { 
-            $.getJSON(&apos;/data&apos;, function (data) { 
+            $(function () &#123; 
+            $.getJSON(&#39;/data&#39;, function (data) &#123; 
                 // Create the chart 
-                $(&apos;#container&apos;).highcharts(&apos;StockChart&apos;, { 
-                    chart:{ 
-                        events:{ 
-                            load:function(){ 
+                $(&#39;#container&#39;).highcharts(&#39;StockChart&#39;, &#123; 
+                    chart:&#123; 
+                        events:&#123; 
+                            load:function()&#123; 
                                 var series = this.series[0] 
-                                setInterval(function(){ 
-                                $.getJSON(&apos;/data&apos;,function(res){ 
-                                    $.each(res,function(i,v) { 
+                                setInterval(function()&#123; 
+                                $.getJSON(&#39;/data&#39;,function(res)&#123; 
+                                    $.each(res,function(i,v) &#123; 
                                         series.addPoint(v) 
-                                    }) 
-                                }) 
-                                },3000) 
-                            } 
-                        } 
-                    }, 
-                    rangeSelector: { 
+                                    &#125;) 
+                                &#125;) 
+                                &#125;,3000) 
+                            &#125; 
+                        &#125; 
+                    &#125;, 
+                    rangeSelector: &#123; 
                         selected: 1 
-                    }, 
-                    title: { 
-                        text: &apos;内存使用率-单位M&apos; 
-                    }, 
-                    series: [{ 
-                        name: &apos;内存使用率&apos;, 
+                    &#125;, 
+                    title: &#123; 
+                        text: &#39;内存使用率-单位M&#39; 
+                    &#125;, 
+                    series: [&#123; 
+                        name: &#39;内存使用率&#39;, 
                         data: data, 
-                        type: &apos;spline&apos;, 
-                        tooltip: { 
+                        type: &#39;spline&#39;, 
+                        tooltip: &#123; 
                             valueDecimals: 2 
-                        } 
-                    }] 
-                }); 
-            }); 
-        }); 
+                        &#125; 
+                    &#125;] 
+                &#125;); 
+            &#125;); 
+        &#125;); 
     &lt;/script&gt; 
 &lt;/body&gt; 
 &lt;/html&gt; 
-</code></pre><p>其实仔细看跟hcharts上面的实例差不多，只是加入了几行代码实现动态刷新；</p>
-<pre><code>chart:{ 
-    events:{ 
-        load:function(){ 
+</code></pre>
+<p>其实仔细看跟hcharts上面的实例差不多，只是加入了几行代码实现动态刷新；</p>
+<pre><code>chart:&#123; 
+    events:&#123; 
+        load:function()&#123; 
             var series = this.series[0] 
-            setInterval(function(){ 
-            $.getJSON(&apos;/data&apos;,function(res){ 
-                $.each(res,function(i,v) { 
+            setInterval(function()&#123; 
+            $.getJSON(&#39;/data&#39;,function(res)&#123; 
+                $.each(res,function(i,v) &#123; 
                     series.addPoint(v) 
-                }) 
-            }) 
-            },3000) 
-        } 
-    } 
-}, 
-</code></pre><p>8、接下来启动django开发环境；</p>
+                &#125;) 
+            &#125;) 
+            &#125;,3000) 
+        &#125; 
+    &#125; 
+&#125;, 
+</code></pre>
+<p>8、接下来启动django开发环境；</p>
 <pre><code>cd memory 
 (py35env) [root@jupyter memory]# python manage.py runserver 0.0.0.0:8000 
 Performing system checks... 
-
+ 
 System check identified no issues (0 silenced). 
 May 26, 2017 - 11:02:18 
-Django version 1.11.1, using settings &apos;memory.settings&apos; 
+Django version 1.11.1, using settings &#39;memory.settings&#39; 
 Starting development server at http://0.0.0.0:8000/ 
 Quit the server with CONTROL-C. 
-</code></pre><p>然后通过浏览器就可以访问10.0.10.250:8000看到效果了；<br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/anything/1_111719_1.jpg" alt="Screenshot"></p>
+</code></pre>
+<p>然后通过浏览器就可以访问10.0.10.250:8000看到效果了；<br><img src="https://raw.githubusercontent.com/xskh2007/xskh2007.github.io/master/images/anything/1_111719_1.jpg" alt="Screenshot"></p>
 <p>这里调用的数据是上一篇 python 获取centos7的内存使用率并写入mysql   ，只要把monitor.py执行就可以看到动态的展现效果了。</p>
 
-      
     </div>
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/hcharts/" rel="tag"># hcharts</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/15/cloud/cloud/" rel="next" title="kvm虚拟化管理平台WebVirtMgr部署-完整记录(1)">
-                <i class="fa fa-chevron-left"></i> kvm虚拟化管理平台WebVirtMgr部署-完整记录(1)
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hcharts/" rel="tag"># hcharts</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/19/zabbix/zabbix批量创建web_scenario/" rel="prev" title="zabbix批量创建web_scenario">
-                zabbix批量创建web_scenario <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/06/15/anything/Compile/" rel="prev" title="编译原理">
+      <i class="fa fa-chevron-left"></i> 编译原理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/06/19/zabbix/zabbix%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BAweb_scenario/" rel="next" title="zabbix批量创建web_scenario">
+      zabbix批量创建web_scenario <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    
-  </div>
-
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="qiantu" />
-          <p class="site-author-name" itemprop="name">qiantu</p>
-           
-              <p class="site-description motion-element" itemprop="description">You think you can, you can.</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
+  <p class="site-author-name" itemprop="name">qiantu</p>
+  <div class="site-description" itemprop="description">You think you can, you can.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-
-        <div class="links-of-author motion-element">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
           
-        </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cclouds.me/" title="cclouds" target="_blank">cclouds</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
 
 
-      </section>
 
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        
+
+        
+
+<div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">qiantu</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>访问总量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
 
 
-        
+
+
+
+
+
+
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+<script src="/js/utils.js"></script>
 
-
-
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/muse.js"></script>
 
 
-
-
-  
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
 
 
 
 
 
-  
-    
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "b587eae6d1cc415a82e921c882914d85",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
-  
 
 
 
@@ -958,22 +642,7 @@ Quit the server with CONTROL-C.
 
   
 
-
-
-
-
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 </body>
 </html>

@@ -1,408 +1,248 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-  <meta name="baidu-site-verification" content="MAbZIIQ7Dw" />
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="zabbix," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
-
-
-
-<meta name="description" content="crontab: no changes made to crontab [root@autoyunwei ~]# vim /etc/crontab  [root@autoyunwei ~]# vim /root/script/xunjian.py [root@autoyunwei ~]# cat  /root/script/xunjian.py #!/usr/bin/env python # -">
-<meta name="keywords" content="zabbix">
+  <meta name="description" content="crontab: no changes made to crontab [root@autoyunwei ~]# vim &#x2F;etc&#x2F;crontab  [root@autoyunwei ~]# vim &#x2F;root&#x2F;script&#x2F;xunjian.py [root@autoyunwei ~]# cat  &#x2F;root&#x2F;script&#x2F;xunjian.py #!&#x2F;usr&#x2F;bin&#x2F;env python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自动巡检脚本(调用zabbix接口实现)">
-<meta property="og:url" content="http://yoursite.com/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/06/15/zabbix/%E8%87%AA%E5%8A%A8%E5%B7%A1%E6%A3%80%E8%84%9A%E6%9C%AC(%E8%B0%83%E7%94%A8zabbix%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0)%20-%20%E5%89%AF%E6%9C%AC/index.html">
 <meta property="og:site_name" content="向山看海">
-<meta property="og:description" content="crontab: no changes made to crontab [root@autoyunwei ~]# vim /etc/crontab  [root@autoyunwei ~]# vim /root/script/xunjian.py [root@autoyunwei ~]# cat  /root/script/xunjian.py #!/usr/bin/env python # -">
-<meta property="og:updated_time" content="2017-06-20T01:54:37.674Z">
+<meta property="og:description" content="crontab: no changes made to crontab [root@autoyunwei ~]# vim &#x2F;etc&#x2F;crontab  [root@autoyunwei ~]# vim &#x2F;root&#x2F;script&#x2F;xunjian.py [root@autoyunwei ~]# cat  &#x2F;root&#x2F;script&#x2F;xunjian.py #!&#x2F;usr&#x2F;bin&#x2F;env python">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-06-15T06:17:27.000Z">
+<meta property="article:modified_time" content="2023-12-05T02:19:43.396Z">
+<meta property="article:author" content="qiantu">
+<meta property="article:tag" content="zabbix">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自动巡检脚本(调用zabbix接口实现)">
-<meta name="twitter:description" content="crontab: no changes made to crontab [root@autoyunwei ~]# vim /etc/crontab  [root@autoyunwei ~]# vim /root/script/xunjian.py [root@autoyunwei ~]# cat  /root/script/xunjian.py #!/usr/bin/env python # -">
+
+<link rel="canonical" href="http://yoursite.com/2017/06/15/zabbix/%E8%87%AA%E5%8A%A8%E5%B7%A1%E6%A3%80%E8%84%9A%E6%9C%AC(%E8%B0%83%E7%94%A8zabbix%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0)%20-%20%E5%89%AF%E6%9C%AC/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/"/>
-
-
-
-
-
   <title>自动巡检脚本(调用zabbix接口实现) | 向山看海</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">向山看海</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">向山看海</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
         <li class="menu-item menu-item-zjump">
-          <a href="/zjump/" rel="section">
-            
-            zjump
-          </a>
-        </li>
-      
-        
+
+    <a href="/zjump/" rel="section"><i class="fa fa-zjump fa-fw"></i>zjump</a>
+
+  </li>
         <li class="menu-item menu-item-envmanage">
-          <a href="/envmanage/" rel="section">
-            
-            envmanage
-          </a>
-        </li>
-      
-        
+
+    <a href="/envmanage/" rel="section"><i class="fa fa-envmanage fa-fw"></i>envmanage</a>
+
+  </li>
         <li class="menu-item menu-item-nginxadmin">
-          <a href="/nginxadmin/" rel="section">
-            
-            nginxadmin
-          </a>
-        </li>
-      
-        
+
+    <a href="/nginxadmin/" rel="section"><i class="fa fa-nginxadmin fa-fw"></i>nginxadmin</a>
+
+  </li>
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
+
+    <a href="/categories/" rel="section"><i class="fa fa-archives fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-        
+
+    <a href="/archives/" rel="section"><i class="fa fa-zjump fa-fw"></i>归档</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-            关于
-          </a>
-        </li>
-      
-        
+
+    <a href="/about/" rel="section"><i class="fa fa-about fa-fw"></i>关于</a>
+
+  </li>
         <li class="menu-item menu-item-books">
-          <a href="/books/" rel="section">
-            
-            读书
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/books/" rel="section"><i class="fa fa-books fa-fw"></i>books</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/zabbix/%E8%87%AA%E5%8A%A8%E5%B7%A1%E6%A3%80%E8%84%9A%E6%9C%AC(%E8%B0%83%E7%94%A8zabbix%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0)%20-%20%E5%89%AF%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="qiantu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="You think you can, you can.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="向山看海">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">自动巡检脚本(调用zabbix接口实现)</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          自动巡检脚本(调用zabbix接口实现)
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T14:17:27+08:00">
-                2017-06-15
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/zabbix/" itemprop="url" rel="index">
-                    <span itemprop="name">zabbix</span>
-                  </a>
-                </span>
-
-                
-                
-              
+              <time title="创建时间：2017-06-15 14:17:27" itemprop="dateCreated datePublished" datetime="2017-06-15T14:17:27+08:00">2017-06-15</time>
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/15/zabbix/自动巡检脚本(调用zabbix接口实现) - 副本/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-12-05 10:19:43" itemprop="dateModified" datetime="2023-12-05T10:19:43+08:00">2023-12-05</time>
               </span>
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zabbix/" itemprop="url" rel="index"><span itemprop="name">zabbix</span></a>
+                </span>
             </span>
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <!-- toc -->
+
+
+
 <pre><code>crontab: no changes made to crontab
 [root@autoyunwei ~]# vim /etc/crontab 
 [root@autoyunwei ~]# vim /root/script/xunjian.py
@@ -425,31 +265,31 @@ from email.MIMEImage import MIMEImage
 from email.MIMEMultipart import MIMEMultipart
 
 # based on zabbix 2.4.4
-ZABBIX_HOST = &apos;192.168.2.91&apos;
-ZABBIX_USER = &apos;Admin&apos;
-ZABBIX_PWD = &apos;zzjr#2015&apos;
+ZABBIX_HOST = &#39;192.168.2.91&#39;
+ZABBIX_USER = &#39;Admin&#39;
+ZABBIX_PWD = &#39;zzjr#2015&#39;
 
-ZABBIX_DB_HOST = &apos;192.168.2.91&apos;
-ZABBIX_DB_USER = &apos;zabbix&apos;
-ZABBIX_DB_PWD = &apos;zabbix&apos;
-ZABBIX_DB_NAME = &apos;zabbix&apos;
+ZABBIX_DB_HOST = &#39;192.168.2.91&#39;
+ZABBIX_DB_USER = &#39;zabbix&#39;
+ZABBIX_DB_PWD = &#39;zabbix&#39;
+ZABBIX_DB_NAME = &#39;zabbix&#39;
 
 GRAPH_PATH = &quot;zabbix_img&quot;
 GRAPH_PERIOD = 86400  # one day
 
-EMAIL_DOMAIN = &apos;zuozh.com&apos;
-EMAIL_USERNAME = &apos;wangqiantu&apos;
-EMAIL_PASSWORD = &apos;Lht1111&apos;
+EMAIL_DOMAIN = &#39;zuozh.com&#39;
+EMAIL_USERNAME = &#39;wangqiantu&#39;
+EMAIL_PASSWORD = &#39;Lht1111&#39;
 
 
 def query_screens(screen_name):
     conn = MySQLdb.connect(host=ZABBIX_DB_HOST, user=ZABBIX_DB_USER, passwd=ZABBIX_DB_PWD,
-                        db=ZABBIX_DB_NAME, charset=&apos;utf8&apos;, connect_timeout=20)
+                        db=ZABBIX_DB_NAME, charset=&#39;utf8&#39;, connect_timeout=20)
     cur = conn.cursor()
     count = cur.execute(&quot;&quot;&quot;
             select a.name, a.screenid, b.resourceid, b.width, b.height
                 from screens a, screens_items as b
-                where a.screenid=b.screenid and a.templateid&lt;=&gt;NULL and a.name=&apos;%s&apos;
+                where a.screenid=b.screenid and a.templateid&lt;=&gt;NULL and a.name=&#39;%s&#39;
                 order by a.screenid;
             &quot;&quot;&quot; % screen_name)
     if count == 0:
@@ -464,28 +304,28 @@ def query_screens(screen_name):
 
 
 def generate_graphs(screens):
-    login_resp = requests.post(&apos;http://%s/zabbix/index.php&apos; % ZABBIX_HOST, data={
-        &apos;name&apos;: ZABBIX_USER,
-        &apos;password&apos;: ZABBIX_PWD,
-        &apos;enter&apos;: &apos;Sign in&apos;,
-        &apos;autologin&apos;: 1,
-    })
-    session_id = login_resp.cookies[&apos;zbx_sessionid&apos;]
+    login_resp = requests.post(&#39;http://%s/zabbix/index.php&#39; % ZABBIX_HOST, data=&#123;
+        &#39;name&#39;: ZABBIX_USER,
+        &#39;password&#39;: ZABBIX_PWD,
+        &#39;enter&#39;: &#39;Sign in&#39;,
+        &#39;autologin&#39;: 1,
+    &#125;)
+    session_id = login_resp.cookies[&#39;zbx_sessionid&#39;]
 
     graphs = []
     for i, (screen_name, screen_id, graph_id, width, height) in enumerate(screens):
-        params = {
-            &apos;screenid&apos;: screen_id,
-            &apos;graphid&apos;: graph_id,
-            &apos;width&apos;: width * 2,
-            &apos;height&apos;: height * 2,
-            &apos;period&apos;: GRAPH_PERIOD,
-            &apos;stime&apos;: datetime.datetime.utcnow().strftime(&apos;%Y%m%d%H%M%S&apos;),
-        }
-        resp = requests.get(&apos;http://%s/zabbix/chart2.php&apos; % ZABBIX_HOST, params=params,
-                            cookies={&apos;zbx_sessionid&apos;: session_id})
-        file_name = &apos;_&apos;.join(map(str, screens[i][:3])).replace(&apos; &apos;, &apos;_&apos;) + &apos;.png&apos;
-        with open(os.path.join(GRAPH_PATH, file_name), &apos;wb&apos;) as fp:
+        params = &#123;
+            &#39;screenid&#39;: screen_id,
+            &#39;graphid&#39;: graph_id,
+            &#39;width&#39;: width * 2,
+            &#39;height&#39;: height * 2,
+            &#39;period&#39;: GRAPH_PERIOD,
+            &#39;stime&#39;: datetime.datetime.utcnow().strftime(&#39;%Y%m%d%H%M%S&#39;),
+        &#125;
+        resp = requests.get(&#39;http://%s/zabbix/chart2.php&#39; % ZABBIX_HOST, params=params,
+                            cookies=&#123;&#39;zbx_sessionid&#39;: session_id&#125;)
+        file_name = &#39;_&#39;.join(map(str, screens[i][:3])).replace(&#39; &#39;, &#39;_&#39;) + &#39;.png&#39;
+        with open(os.path.join(GRAPH_PATH, file_name), &#39;wb&#39;) as fp:
             fp.write(resp.content)
         graphs.append(file_name)
 
@@ -493,30 +333,30 @@ def generate_graphs(screens):
 
 
 def send_mail(screen_name, graphs, to_list):
-    me = u&apos;巡检报告 &lt;%s@%s&gt;&apos; % (EMAIL_USERNAME, EMAIL_DOMAIN)
+    me = u&#39;巡检报告 &lt;%s@%s&gt;&#39; % (EMAIL_USERNAME, EMAIL_DOMAIN)
 
     def _create_msg():
-        msg = MIMEMultipart(&apos;related&apos;)
+        msg = MIMEMultipart(&#39;related&#39;)
         title=u&quot;每日巡检报告&quot;
-        msg[&apos;Subject&apos;] = &apos;%s: %s&apos; % (title,screen_name)
-        msg[&apos;From&apos;] = me
-        msg[&apos;To&apos;] = &apos;;&apos;.join(to_list)
-        msg.preamble = &apos;This is a multi-part message in MIME format.&apos;
+        msg[&#39;Subject&#39;] = &#39;%s: %s&#39; % (title,screen_name)
+        msg[&#39;From&#39;] = me
+        msg[&#39;To&#39;] = &#39;;&#39;.join(to_list)
+        msg.preamble = &#39;This is a multi-part message in MIME format.&#39;
 
         contents = &quot;&lt;h1&gt;Screen %s&lt;/h1&gt;&lt;br&gt;&quot; % screen_name
         contents += &quot;&lt;table&gt;&quot;
         for g_name in graphs:
-            with open(os.path.join(GRAPH_PATH, g_name), &apos;rb&apos;) as fp:
+            with open(os.path.join(GRAPH_PATH, g_name), &#39;rb&#39;) as fp:
                 msg_image = MIMEImage(fp.read())
-                msg_image.add_header(&apos;Content-ID&apos;, &quot;&lt;%s&gt;&quot; % g_name)
+                msg_image.add_header(&#39;Content-ID&#39;, &quot;&lt;%s&gt;&quot; % g_name)
                 msg.attach(msg_image)
 
-            contents += &apos;&apos;
-            contents += &quot;&lt;tr&gt;&lt;td&gt;&lt;img src=&apos;cid:%s&apos;&gt;&lt;/td&gt;&lt;/tr&gt;&quot; % g_name
+            contents += &#39;&#39;
+            contents += &quot;&lt;tr&gt;&lt;td&gt;&lt;img src=&#39;cid:%s&#39;&gt;&lt;/td&gt;&lt;/tr&gt;&quot; % g_name
         contents += &quot;&lt;/table&gt;&quot;
 
-        msg_text = MIMEText(contents, &apos;html&apos;)
-        msg_alternative = MIMEMultipart(&apos;alternative&apos;)
+        msg_text = MIMEText(contents, &#39;html&#39;)
+        msg_alternative = MIMEMultipart(&#39;alternative&#39;)
         msg_alternative.attach(msg_text)
         msg.attach(msg_alternative)
 
@@ -524,22 +364,22 @@ def send_mail(screen_name, graphs, to_list):
 
     try:
         server = smtplib.SMTP()
-        server.connect(&apos;smtp.%s&apos; % EMAIL_DOMAIN)
-        server.login(&apos;%s@%s&apos; % (EMAIL_USERNAME, EMAIL_DOMAIN), EMAIL_PASSWORD)
+        server.connect(&#39;smtp.%s&#39; % EMAIL_DOMAIN)
+        server.login(&#39;%s@%s&#39; % (EMAIL_USERNAME, EMAIL_DOMAIN), EMAIL_PASSWORD)
         server.sendmail(me, to_list, _create_msg().as_string())
         server.close()
-        print &apos;send mail Ok!&apos;
+        print &#39;send mail Ok!&#39;
     except Exception, e:
         print e
 
 
-if __name__ == &apos;__main__&apos;:
+if __name__ == &#39;__main__&#39;:
     # remove old dirs
     if os.path.exists(GRAPH_PATH):
         shutil.rmtree(GRAPH_PATH)
     os.makedirs(GRAPH_PATH)
 
-    for srn_name in (u&apos;All databases machine cpu&apos;,u&apos;All virtual machine io&apos;,u&apos;All virtual machine memory&apos;,u&apos;All virtual machine traffic&apos;,u&apos;ALL nginx connections&apos;):
+    for srn_name in (u&#39;All databases machine cpu&#39;,u&#39;All virtual machine io&#39;,u&#39;All virtual machine memory&#39;,u&#39;All virtual machine traffic&#39;,u&#39;ALL nginx connections&#39;):
         # get screens
         all_screens = query_screens(srn_name)
         print all_screens
@@ -547,359 +387,191 @@ if __name__ == &apos;__main__&apos;:
         # generate graphs
         graphs = generate_graphs(all_screens)
 
-        send_mail(srn_name, graphs, [&apos;monitor@zuozh.com&apos;])
-        #send_mail(srn_name, graphs, [&apos;wangqiantu@zuozh.com&apos;])
+        send_mail(srn_name, graphs, [&#39;monitor@zuozh.com&#39;])
+        #send_mail(srn_name, graphs, [&#39;wangqiantu@zuozh.com&#39;])
 </code></pre>
-      
+
     </div>
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/zabbix/" rel="tag"># zabbix</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/15/zjump/zjump/" rel="next" title="zjump">
-                <i class="fa fa-chevron-left"></i> zjump
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/zabbix/" rel="tag"># zabbix</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/15/anything/rocketmq/" rel="prev" title="RocketMQ-Console-Ng  how to install">
-                RocketMQ-Console-Ng  how to install <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/06/15/python/Django%E4%B8%AD%E5%86%85%E7%BD%AE%E7%9A%84%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B61%EF%BC%8DUser%20Model/" rel="prev" title="Django中内置的权限控制1－User Model">
+      <i class="fa fa-chevron-left"></i> Django中内置的权限控制1－User Model
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/06/15/zabbix/zabbix3.2.1/" rel="next" title="zabbix3.2.1分布式监控，采用agent主动模式">
+      zabbix3.2.1分布式监控，采用agent主动模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    
-  </div>
-
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="qiantu" />
-          <p class="site-author-name" itemprop="name">qiantu</p>
-           
-              <p class="site-description motion-element" itemprop="description">You think you can, you can.</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
+  <p class="site-author-name" itemprop="name">qiantu</p>
+  <div class="site-description" itemprop="description">You think you can, you can.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-
-        <div class="links-of-author motion-element">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
           
-        </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cclouds.me/" title="cclouds" target="_blank">cclouds</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
 
 
-      </section>
 
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        
+
+        
+
+<div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">qiantu</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>访问总量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
 
 
-        
+
+
+
+
+
+
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+<script src="/js/utils.js"></script>
 
-
-
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/muse.js"></script>
 
 
-
-
-  
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
 
 
 
 
 
-  
-    
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "b587eae6d1cc415a82e921c882914d85",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
-  
 
 
 
@@ -912,22 +584,7 @@ if __name__ == &apos;__main__&apos;:
 
   
 
-
-
-
-
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 </body>
 </html>
